@@ -1,0 +1,390 @@
+/* Beginning of landing section */
+
+#landing {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  background-image: url(../../assets/drive-banner.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#landing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1; /* Ensures it sits on top of the background image */
+}
+.landing_container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.landing_container h1 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  z-index: 1;
+  text-transform: uppercase;
+}
+.landing_container button {
+  padding: 1rem 3rem;
+  border: 1px solid white;
+  color: white;
+  border-radius: 3rem;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
+  word-spacing: 2px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.landing_container button:hover {
+  background-color: white;
+  color: black;
+}
+/* End of landing section */
+
+/* beginning of quality section */
+#quality {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+  padding: 10rem 0;
+  background-color: black;
+}
+.quality_container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.quality_container h2 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  flex: 1;
+}
+.quality_container p {
+  color: white;
+  word-spacing: 1px;
+  letter-spacing: 1.5px;
+  flex: 1;
+  line-height: 1.8rem;
+}
+
+/* End of quality section */
+/* Beginning of quote */
+#quote {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0rem;
+  background-color: black;
+  flex-direction: column;
+  gap: 3rem;
+}
+#quote h2 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  width: 80%;
+}
+#quote h4 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+/* End of quote */
+
+/* beginning of amenities */
+#amenities {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0rem;
+  background-color: black;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#amenities h2 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+#amenities h4 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  width: 50%;
+}
+.amenities_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+.amenity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.amenity p {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+.white_dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: white;
+  border-radius: 100%;
+}
+
+/* End of amenities */
+
+/* Beginning of Testimonials */
+#testimonials {
+  padding: 5rem 0;
+  background: rgb(214, 191, 91);
+  background: linear-gradient(
+    90deg,
+    rgba(214, 191, 91, 1) 0%,
+    rgba(203, 173, 137, 1) 42%,
+    rgba(166, 173, 160, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+#testimonials h2 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+#testimonials h4 {
+  color: white;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+/* end of Testimonials */
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .landing_container {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  #quality {
+    padding: 5rem 0;
+  }
+
+  .quality_container {
+    gap: 3rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .quality_container p {
+    line-height: 1.5rem;
+  }
+  /* Beginning of quote */
+
+  #quote h2 {
+    text-align: left;
+    width: 90%;
+  }
+
+  /* End of quote */
+  /* beginning of amenities */
+
+  #amenities h4 {
+    color: white;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: left;
+    width: 90%;
+  }
+  .amenities_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  /* End of amenities */
+
+  #testimonials h2 {
+    width: 90%;
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .landing_container {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  #quality {
+    padding: 5rem 0;
+  }
+  .quality_container {
+    gap: 3rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .quality_container p {
+    line-height: 1.5rem;
+  }
+  /* Beginning of quote */
+
+  #quote h2 {
+    text-align: left;
+    width: 90%;
+  }
+
+  /* End of quote */
+  /* beginning of amenities */
+
+  #amenities h4 {
+    color: white;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: left;
+    width: 90%;
+  }
+  .amenities_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  /* End of amenities */
+  #testimonials h2 {
+    width: 90%;
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .landing_container {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+  #quality {
+    padding: 5rem 0;
+  }
+  .quality_container {
+    gap: 3rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .quality_container p {
+    line-height: 1.5rem;
+  }
+  /* Beginning of quote */
+
+  #quote h2 {
+    text-align: left;
+    width: 90%;
+  }
+
+  /* End of quote */
+  /* beginning of amenities */
+
+  #amenities h4 {
+    color: white;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: left;
+    width: 90%;
+  }
+  .amenities_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  /* End of amenities */
+  #testimonials h2 {
+    width: 90%;
+    text-align: left;
+  }
+}
