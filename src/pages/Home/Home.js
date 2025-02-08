@@ -1,8 +1,8 @@
 import React from "react";
 import "./home.css";
-import girl1 from "../../assets/girl1.jpg";
-import girl2 from "../../assets/girl2.jpg";
+
 import ContactForm from "../../components/ContactForm/ContactForm";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const amenities = [
@@ -84,6 +84,7 @@ const Home = () => {
         </h2>
         <h4 className="nue">- Sourabh</h4>
       </section>
+      <Footer />
     </>
   );
 };
