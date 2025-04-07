@@ -16,6 +16,10 @@
   background-color: black;
   transition: background-color 0.3s ease-in-out;
 }
+.nav_container.bgWhite {
+  background-color: white;
+}
+
 .navbar_container h2 {
   color: white;
   /* font-size: 2.5rem; */

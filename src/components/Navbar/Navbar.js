@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { ExternalLink } from "../../utils/utils";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
+  const pathname = location.pathname;
+  console.log(pathname);
   // Update the state based on scroll position
   useEffect(() => {
     const handleScroll = () => {
@@ -65,22 +68,28 @@ const Navbar = () => {
 
   return (
     <div
-      className={`navbar_container ${scrolled ? "scrolled" : ""}`}
+      className={`navbar_container ${
+        scrolled && pathname === "/" ? "scrolled" : ""
+      }`}
       // Optionally, you can use inline styles if you don't want to use CSS class
       // style={{ backgroundColor: scrolled ? "black" : "transparent" }}
     >
       <Link to="/">
-        <h2 className="Anton">COMBAT 24</h2>
+        <h2 className="Anton" style={{ color: pathname != "/" && "black" }}>
+          COMBAT 24
+        </h2>
       </Link>
       <nav className="nav_container">
         {navLinks.map((link) => (
           <Link to={link.path} key={link.id}>
             <div className="nav_link_item">
-              <p className="nue">{link.text}</p>
+              <p className="nue" style={{ color: pathname != "/" && "black" }}>
+                {link.text}
+              </p>
               {link.sublinks && (
                 <IoIosArrowUp
                   style={{
-                    color: "white",
+                    color: pathname != "/" ? "black" : "white",
                     transform: "rotate(180deg)",
                   }}
                 />
@@ -91,10 +100,13 @@ const Navbar = () => {
       </nav>
       <div className="social_container">
         <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
-          <FaInstagram color="white" size={30} />
+          <FaInstagram color={pathname != "/" ? "black" : "white"} size={30} />
         </ExternalLink>
         <ExternalLink href={"https://www.facebook.com/share/1659Y8bfk7/"}>
-          <FaFacebook color="white" size={30}></FaFacebook>
+          <FaFacebook
+            color={pathname != "/" ? "black" : "white"}
+            size={30}
+          ></FaFacebook>
         </ExternalLink>
       </div>
     </div>
