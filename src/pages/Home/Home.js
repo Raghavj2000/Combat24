@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-
+import CoachPriya from "../../assets/Coach Priya.jpg";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
 
@@ -49,6 +49,9 @@ const Home = () => {
             helping you achieve your fitness goals. Discover all of our
             club&apos;s offerings below.
           </p>
+        </div>
+        <div className="quality_image_container">
+          <img src={CoachPriya} alt="" />
         </div>
       </section>
       <section id="quote">

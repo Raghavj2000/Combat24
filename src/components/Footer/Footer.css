@@ -6,4 +6,77 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 5rem;
+}
+.location_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.location_header {
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.footer_image_container {
+  width: 100%;
+  height: 25rem; /* Fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  flex-wrap: wrap;
+}
+.footer_image_container .footer_image {
+  flex: 1;
+  height: 100%;
+}
+.footer_image_container .footer_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.copyright_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.copyright_container .contact_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .footer_image_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
+    height: auto; /* Let it grow naturally */
+  }
+
+  .footer_image_container .footer_image {
+    height: 100%;
+    width: 100%;
+  }
+  .copyright_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 90%;
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  .copyright_container .contact_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+  }
 }

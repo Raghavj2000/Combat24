@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { IoIosArrowUp } from "react-icons/io";
-import instagramWhite from "../../assets/instagram_white.png";
-import instagramBlack from "../../assets/instagram_black.png";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { ExternalLink } from "../../utils/utils";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -90,9 +90,12 @@ const Navbar = () => {
         ))}
       </nav>
       <div className="social_container">
-        <Link to="https://www.instagram.com/combat.24/">
-          <img src={instagramWhite} alt="instagram" />
-        </Link>
+        <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
+          <FaInstagram color="white" size={30} />
+        </ExternalLink>
+        <ExternalLink href={"https://www.facebook.com/share/1659Y8bfk7/"}>
+          <FaFacebook color="white" size={30}></FaFacebook>
+        </ExternalLink>
       </div>
     </div>
   );
