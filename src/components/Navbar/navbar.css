@@ -18,6 +18,10 @@
 }
 .nav_container.bgWhite {
   background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+.navbar_container.scrollwhite {
+  background-color: white;
 }
 
 .navbar_container h2 {

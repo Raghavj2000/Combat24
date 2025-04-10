@@ -69,13 +69,17 @@ const Navbar = () => {
   return (
     <div
       className={`navbar_container ${
-        scrolled && pathname === "/" ? "scrolled" : ""
+        pathname === "/" && scrolled
+          ? "scrolled"
+          : pathname !== "/"
+          ? "scrollwhite"
+          : ""
       }`}
       // Optionally, you can use inline styles if you don't want to use CSS class
       // style={{ backgroundColor: scrolled ? "black" : "transparent" }}
     >
       <Link to="/">
-        <h2 className="Anton" style={{ color: pathname != "/" && "black" }}>
+        <h2 className="Anton" style={{ color: pathname !== "/" && "black" }}>
           COMBAT 24
         </h2>
       </Link>
@@ -83,13 +87,13 @@ const Navbar = () => {
         {navLinks.map((link) => (
           <Link to={link.path} key={link.id}>
             <div className="nav_link_item">
-              <p className="nue" style={{ color: pathname != "/" && "black" }}>
+              <p className="nue" style={{ color: pathname !== "/" && "black" }}>
                 {link.text}
               </p>
               {link.sublinks && (
                 <IoIosArrowUp
                   style={{
-                    color: pathname != "/" ? "black" : "white",
+                    color: pathname !== "/" ? "black" : "white",
                     transform: "rotate(180deg)",
                   }}
                 />
@@ -100,11 +104,11 @@ const Navbar = () => {
       </nav>
       <div className="social_container">
         <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
-          <FaInstagram color={pathname != "/" ? "black" : "white"} size={30} />
+          <FaInstagram color={pathname !== "/" ? "black" : "white"} size={30} />
         </ExternalLink>
         <ExternalLink href={"https://www.facebook.com/share/1659Y8bfk7/"}>
           <FaFacebook
-            color={pathname != "/" ? "black" : "white"}
+            color={pathname !== "/" ? "black" : "white"}
             size={30}
           ></FaFacebook>
         </ExternalLink>

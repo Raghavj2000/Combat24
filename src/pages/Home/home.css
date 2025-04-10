@@ -249,6 +249,16 @@
   .quality_container p {
     line-height: 1.5rem;
   }
+  .quality_image_container {
+    width: 90%;
+    height: 100%;
+    margin-top: 5rem;
+  }
+  .quality_image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
   /* Beginning of quote */
 
   #quote h2 {
