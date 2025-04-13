@@ -1,6 +1,5 @@
 import React from "react";
 import "./Schedule.css";
-import { ExternalLink } from "../../utils/utils";
 import scheduleFile from "../../files/schedule.pdf";
 import Footer from "../../components/Footer/Footer";
 
