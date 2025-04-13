@@ -1,0 +1,167 @@
+#schedule {
+  padding: 6rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+.schedule_wrapper {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.schedule_title {
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.schedule_container {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 3rem 0;
+}
+.schedule_container .day_container {
+  width: 50%;
+}
+.day_container .day_title {
+  font-size: 5rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+.schedule_container .time_table_container {
+  width: 50%;
+  gap: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.time_table_container .time_table_day {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.time_table_title {
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.schedule_line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  #schedule {
+    padding: 4rem 0rem;
+  }
+  .schedule_wrapper {
+    width: 80%;
+  }
+
+  .schedule_container {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 3rem 0;
+  }
+  .schedule_container .day_container {
+    width: 50%;
+  }
+  .day_container .day_title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  .schedule_container .time_table_container {
+    width: 90%;
+    gap: 1rem;
+  }
+  .time_table_container .time_table_day {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .schedule_pdf {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  #schedule {
+    padding: 4rem 0rem;
+  }
+  .schedule_wrapper {
+    width: 80%;
+  }
+
+  .schedule_container {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 3rem 0;
+  }
+  .schedule_container .day_container {
+    width: 50%;
+  }
+  .day_container .day_title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  .schedule_container .time_table_container {
+    width: 90%;
+    gap: 1rem;
+  }
+  .time_table_container .time_table_day {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .schedule_pdf {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  #schedule {
+    padding: 4rem 0rem;
+  }
+  .schedule_wrapper {
+    width: 80%;
+  }
+
+  .schedule_container {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 3rem 0;
+  }
+  .schedule_container .day_container {
+    width: 50%;
+  }
+  .day_container .day_title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  .schedule_container .time_table_container {
+    width: 90%;
+    gap: 1rem;
+  }
+  .time_table_container .time_table_day {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .schedule_pdf {
+    font-size: 1.5rem;
+  }
+}

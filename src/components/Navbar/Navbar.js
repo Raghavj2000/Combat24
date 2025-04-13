@@ -34,7 +34,7 @@ const Navbar = () => {
   const navLinks = [
     {
       id: 2,
-      path: "",
+      path: null,
       text: "About",
       sublinks: [
         {

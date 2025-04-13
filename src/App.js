@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
+const Schedule = lazy(() => import("./pages/Schedule/Schedule"));
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </Suspense>
     </>
