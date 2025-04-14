@@ -36,7 +36,7 @@ const Footer = () => {
         <h3 className="Anton location_header">BENGALURU</h3>
         <p className="nue">
           No.28, 3rd Floor,
-          <br /> Anjanadri Arcade, 1st Main,,
+          <br /> Anjanadri Arcade, 1st Main,
           <br /> CBI Road, Ganganagar, Bengaluru-560032
         </p>
       </div>
@@ -55,7 +55,7 @@ const Footer = () => {
           <p className="nue">combat24india@gmail.com</p>
         </div>
         <Link to="/">
-          <h2 className="Anton">COMBAT 24</h2>
+          <h2 className="Anton footer_title">COMBAT 24</h2>
         </Link>
       </div>
     </footer>

@@ -84,7 +84,10 @@ const Navbar = () => {
       // style={{ backgroundColor: scrolled ? "black" : "transparent" }}
     >
       <Link to="/">
-        <h2 className="Anton" style={{ color: pathname !== "/" && "black" }}>
+        <h2
+          className="Anton header_title"
+          style={{ color: pathname !== "/" && "black" }}
+        >
           COMBAT 24
         </h2>
       </Link>

@@ -9,14 +9,11 @@ const Contact = lazy(() => import("./pages/Contact/Contact"));
 const Schedule = lazy(() => import("./pages/Schedule/Schedule"));
 
 function App() {
-  const location = useLocation();
-  const home = location.pathname === "/";
-
   return (
     <>
       {
         <div
-          className={`whatsapp_container ${!home ? "black" : ""}`}
+          className={`whatsapp_container`}
           onClick={() =>
             window.open(
               "https://wa.me/918073423859",
@@ -25,7 +22,7 @@ function App() {
             )
           }
         >
-          <FaWhatsapp size={30} color={!home ? "white" : "black"} />
+          <FaWhatsapp size={30} color={"white"} />
         </div>
       }
 

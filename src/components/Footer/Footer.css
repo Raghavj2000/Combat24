@@ -46,10 +46,13 @@ footer {
 }
 .copyright_container .contact_container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 1rem;
   flex-direction: column;
+}
+.footer_title {
+  color: #ff5733;
 }
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .footer_image_container {
