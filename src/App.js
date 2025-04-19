@@ -1,12 +1,15 @@
 import React, { lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { FaWhatsapp } from "react-icons/fa";
+import ScrollResetRoutes from "./utils/ScrollResetRoutes";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 const Schedule = lazy(() => import("./pages/Schedule/Schedule"));
+const Coaches = lazy(() => import("./pages/Coaches/Coaches"));
+const Classes = lazy(() => import("./pages/Classes/Classes"));
 
 function App() {
   return (
@@ -28,11 +31,13 @@ function App() {
 
       <Navbar />
       <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
+        <ScrollResetRoutes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/schedule" element={<Schedule />} />
-        </Routes>
+          <Route path="/coaches" element={<Coaches />} />
+          <Route path="/classes" element={<Classes />} />
+        </ScrollResetRoutes>
       </Suspense>
     </>
   );

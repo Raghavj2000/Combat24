@@ -82,3 +82,59 @@ footer {
     flex-direction: column;
   }
 }
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .footer_image_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
+    height: auto; /* Let it grow naturally */
+  }
+
+  .footer_image_container .footer_image {
+    height: 100%;
+    width: 100%;
+  }
+  .copyright_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 90%;
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  .copyright_container .contact_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .footer_image_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
+    height: auto; /* Let it grow naturally */
+  }
+
+  .footer_image_container .footer_image {
+    height: 100%;
+    width: 100%;
+  }
+  .copyright_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 90%;
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  .copyright_container .contact_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+  }
+}

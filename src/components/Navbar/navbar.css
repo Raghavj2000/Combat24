@@ -72,3 +72,49 @@
 .social_container img:hover {
   transform: scale(1.2);
 }
+.dropdown {
+  position: relative;
+}
+
+.dropdown_trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dropdown_icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown_menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  flex-direction: column;
+  min-width: 10rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  color: black;
+  z-index: 99;
+}
+.dropdown_menu {
+  background-color: white;
+  color: black;
+}
+
+.dropdown_item {
+  padding: 0.5rem 1.25rem;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1rem;
+}
+
+.nav_link_item:hover .dropdown_menu {
+  display: flex;
+}
