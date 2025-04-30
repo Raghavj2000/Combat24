@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { Link, useLocation } from "react-router-dom";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaHamburger, FaInstagram } from "react-icons/fa";
 import { ExternalLink } from "../../utils/utils";
+import { HiMenu } from "react-icons/hi";
+import { RiCloseLargeFill } from "react-icons/ri";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -17,6 +20,17 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup on unmount
+    };
+  }, [menuOpen]);
 
   const navLinks = [
     {
@@ -48,80 +62,179 @@ const Navbar = () => {
   ];
 
   return (
-    <div
-      className={`navbar_container ${
-        pathname === "/" && scrolled
-          ? "scrolled"
-          : pathname !== "/"
-          ? "scrollwhite"
-          : ""
-      }`}
-    >
-      <Link to="/">
-        <h2
-          className="Anton header_title"
-          style={{ color: pathname !== "/" && "black" }}
-        >
-          COMBAT 24
-        </h2>
-      </Link>
+    <>
+      <div
+        className={`navbar_container ${
+          pathname === "/" && scrolled
+            ? "scrolled"
+            : pathname !== "/"
+            ? "scrollwhite"
+            : ""
+        }`}
+      >
+        <Link to="/">
+          <h2
+            className="Anton header_title"
+            style={{ color: pathname !== "/" && "black" }}
+          >
+            COMBAT 24
+          </h2>
+        </Link>
 
-      <nav className="nav_container">
-        {navLinks.map((link) => (
-          <div className="nav_link_item" key={link.id}>
-            {link.sublinks ? (
-              <div className="dropdown">
-                <div className="dropdown_trigger">
+        <nav className="nav_container">
+          {navLinks.map((link) => (
+            <div className="nav_link_item" key={link.id}>
+              {link.sublinks ? (
+                <div className="dropdown">
+                  <div className="dropdown_trigger">
+                    <p
+                      className="nue"
+                      style={{ color: pathname !== "/" && "black" }}
+                    >
+                      {link.text}
+                    </p>
+                  </div>
+                  <div
+                    className="dropdown_menu"
+                    style={{
+                      backgroundColor: pathname !== "/" ? "black" : "white",
+                      color: pathname !== "/" ? "white" : "black",
+                    }}
+                  >
+                    {link.sublinks.map((sublink) => (
+                      <Link
+                        to={sublink.path}
+                        key={sublink.id}
+                        className={`dropdown_item nue ${
+                          pathname !== "/" && "black"
+                        }`}
+                      >
+                        {sublink.text}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link to={link.path}>
                   <p
                     className="nue"
                     style={{ color: pathname !== "/" && "black" }}
                   >
                     {link.text}
                   </p>
-                </div>
-                <div
-                  className="dropdown_menu"
-                  style={{
-                    backgroundColor: pathname !== "/" ? "black" : "white",
-                    color: pathname !== "/" ? "white" : "black",
-                  }}
+                </Link>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        <div className="social_container">
+          <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
+            <FaInstagram
+              color={pathname !== "/" ? "black" : "white"}
+              size={30}
+            />
+          </ExternalLink>
+          <ExternalLink href="https://www.facebook.com/share/1659Y8bfk7/">
+            <FaFacebook
+              color={pathname !== "/" ? "black" : "white"}
+              size={30}
+            />
+          </ExternalLink>
+        </div>
+      </div>
+      <div
+        className={`mobile_nav_container ${
+          pathname === "/" && scrolled
+            ? "scrolled"
+            : pathname !== "/"
+            ? "scrollwhite"
+            : ""
+        }`}
+      >
+        <Link to="/" onClick={() => setMenuOpen(!menuOpen)}>
+          <h2
+            className="Anton header_title"
+            style={{ color: pathname !== "/" && "black" }}
+          >
+            COMBAT 24
+          </h2>
+        </Link>
+        {menuOpen ? (
+          <RiCloseLargeFill
+            color={pathname !== "/" ? "black" : "white"}
+            size={25}
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
+        ) : (
+          <HiMenu
+            color={pathname !== "/" ? "black" : "white"}
+            size={25}
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
+        )}
+      </div>
+      <div
+        className={`mobile_menu ${pathname === "/" ? "bgBlack" : ""}`}
+        style={{
+          left: menuOpen ? "0" : "-100%",
+        }}
+      >
+        {navLinks.map((link) => (
+          <div key={link.id} className="mobile_nav_item">
+            {link.path ? (
+              <Link to={link.path} onClick={() => setMenuOpen(false)}>
+                <h3
+                  className={`Anton main_link ${
+                    pathname === "/" ? "colorWhite" : ""
+                  }`}
                 >
-                  {link.sublinks.map((sublink) => (
+                  {link.text}
+                </h3>
+              </Link>
+            ) : (
+              <div className="dropdown_group">
+                <h3
+                  className={`Anton main_link ${
+                    pathname === "/" ? "colorWhite" : ""
+                  }`}
+                >
+                  {link.text}
+                </h3>
+                <div className="sublink_container">
+                  {link.sublinks?.map((sublink) => (
                     <Link
-                      to={sublink.path}
                       key={sublink.id}
-                      className={`dropdown_item nue ${
-                        pathname !== "/" && "black"
+                      to={sublink.path}
+                      className={`nue sub_link ${
+                        pathname === "/" ? "colorWhite" : ""
                       }`}
+                      onClick={() => setMenuOpen(false)}
                     >
                       {sublink.text}
                     </Link>
                   ))}
                 </div>
               </div>
-            ) : (
-              <Link to={link.path}>
-                <p
-                  className="nue"
-                  style={{ color: pathname !== "/" && "black" }}
-                >
-                  {link.text}
-                </p>
-              </Link>
             )}
           </div>
         ))}
-      </nav>
-
-      <div className="social_container">
-        <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
-          <FaInstagram color={pathname !== "/" ? "black" : "white"} size={30} />
-        </ExternalLink>
-        <ExternalLink href="https://www.facebook.com/share/1659Y8bfk7/">
-          <FaFacebook color={pathname !== "/" ? "black" : "white"} size={30} />
-        </ExternalLink>
+        <div className="social_container_mob">
+          <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
+            <FaInstagram
+              color={pathname !== "/" ? "black" : "white"}
+              size={30}
+            />
+          </ExternalLink>
+          <ExternalLink href="https://www.facebook.com/share/1659Y8bfk7/">
+            <FaFacebook
+              color={pathname !== "/" ? "black" : "white"}
+              size={30}
+            />
+          </ExternalLink>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
