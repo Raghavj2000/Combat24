@@ -3,6 +3,10 @@ import "./home.css";
 import CoachPriya from "../../assets/Coach Priya.jpg";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import ReactPlayer from "react-player";
+import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
 
 const Home = () => {
   const amenities = [
@@ -25,6 +29,25 @@ const Home = () => {
     {
       id: 5,
       title: "Crossfit",
+    },
+  ];
+  const testimonials = [
+    {
+      id: 1,
+      quote:
+        "COMBAT24 WAS CENTRAL IN HELPING ME GAIN THE STAMINA FOR MY RECENT MARATHON.",
+      author: "Sourabh",
+    },
+    {
+      id: 2,
+      quote:
+        "Thanks to Combat24, I feel stronger and more confident every day!",
+      author: "Priya",
+    },
+    {
+      id: 3,
+      quote: "Excellent trainers and equipment! Highly recommend Combat24.",
+      author: "Amit",
     },
   ];
   return (
@@ -79,14 +102,69 @@ const Home = () => {
           ))}
         </div>
       </section>
+      <section id="coaching_tutorial">
+        <div className="coaching_container">
+          <div className="video_container">
+            <ReactPlayer
+              url={sourabhFighting} // replace with your video URL or local path
+              width="100%"
+              height="100%"
+              controls
+              playing={false}
+              loop
+              previewTabIndex={0}
+              config={{
+                file: {
+                  attributes: {
+                    controlsList: "nodownload",
+                  },
+                },
+              }}
+            />
+          </div>
+          <div className="coaching_content">
+            <h2 className="Anton">TRAIN WITH PURPOSE</h2>
+            <h4 className="nue coaching_text">
+              At Combat 24, every session is more than just a workout — it's a
+              step toward a stronger you. Whether you're joining us online or in
+              the club, our expert-led programs are designed to push limits,
+              build discipline, and ignite confidence. Explore all we offer and
+              take the first step toward your transformation.
+            </h4>
+          </div>
+        </div>
+      </section>
+
       <ContactForm />
       <section id="testimonials">
-        <h2 className="Anton">
-          COMBAT24 WAS CENTRAL IN HELPING ME GAIN THE STAMINA FOR MY RECENT
-          MARATHON.
-        </h2>
-        <h4 className="nue">- Sourabh</h4>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          loop={true}
+          breakpoints={{
+            768: {
+              slidesPerView: 1,
+            },
+            1024: {
+              slidesPerView: 1,
+            },
+          }}
+        >
+          {testimonials.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="testimonial_slide">
+                <h2 className="Anton">{item.quote}</h2>
+                <h4 className="nue">- {item.author}</h4>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </section>
+
       <Footer />
     </>
   );

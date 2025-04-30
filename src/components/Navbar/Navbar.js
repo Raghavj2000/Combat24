@@ -24,9 +24,10 @@ const Navbar = () => {
       path: null,
       text: "About",
       sublinks: [
-        { id: 1, path: "/coaches", text: "Coaches" },
-        { id: 2, path: "/classes", text: "Classes" },
-        { id: 3, path: "/gallery", text: "Gallery" },
+        { id: 1, path: "/story", text: "Our Story" },
+        { id: 2, path: "/coaches", text: "Coaches" },
+        { id: 3, path: "/classes", text: "Classes" },
+        { id: 4, path: "/gallery", text: "Gallery" },
       ],
     },
     {

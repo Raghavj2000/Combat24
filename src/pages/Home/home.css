@@ -195,8 +195,7 @@
 
 /* Beginning of Testimonials */
 #testimonials {
-  padding: 5rem 0;
-  background: rgb(214, 191, 91);
+  padding: 2rem 1rem;
   background: linear-gradient(
     90deg,
     rgba(214, 191, 91, 1) 0%,
@@ -204,28 +203,151 @@
     rgba(166, 173, 160, 1) 100%
   );
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
 }
+
 #testimonials h2 {
   color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
   font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
+  line-height: 1.5;
+  margin: 0 auto;
+  width: 100%;
 }
+
 #testimonials h4 {
   color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
+  font-size: 1.2rem;
   font-weight: 400;
-  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* Swiper full-width */
+.swiper {
+  width: 100%;
+  padding-bottom: 4rem;
+}
+
+/* Testimonial slide */
+.testimonial_slide {
+  padding: 2rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 22px;
+}
+
+/* Pagination */
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 2rem;
   text-align: center;
 }
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  background: white;
+  opacity: 0.6;
+  margin: 0 6px !important;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #testimonials h2 {
+    font-size: 1.6rem;
+  }
+
+  #testimonials h4 {
+    font-size: 1rem;
+  }
+
+  .testimonial_slide {
+    padding: 1.5rem 1rem;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
 /* end of Testimonials */
+
+/* beginning of coaching_tutorial */
+
+#coaching_tutorial {
+  padding: 5rem 1rem;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+}
+.coaching_container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.coaching_container .video_container {
+  width: 30rem;
+  height: 40rem;
+}
+.coaching_container .coaching_content {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  text-align: left;
+}
+.coaching_content h2 {
+  color: white;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 auto;
+  width: 100%;
+}
+.coaching_content h4 {
+  color: white;
+
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* end of coaching_tutorial */
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .landing_container {
@@ -262,8 +384,8 @@
   /* Beginning of quote */
 
   #quote h2 {
-    text-align: left;
-    width: 90%;
+    text-align: center;
+    width: 100%;
   }
 
   /* End of quote */
@@ -291,8 +413,33 @@
 
   #testimonials h2 {
     width: 90%;
-    text-align: left;
+    text-align: center;
   }
+  /* beginning of coaching_tutorial */
+
+  .coaching_container {
+    flex-direction: column;
+  }
+  .coaching_container .video_container {
+    width: 90%;
+  }
+  .coaching_container .coaching_content {
+    width: 90%;
+  }
+  .coaching_content h2 {
+    color: white;
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .coaching_content .coaching_text {
+    line-height: 1.5rem;
+  }
+
+  /* end of coaching_tutorial */
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
@@ -320,7 +467,7 @@
   /* Beginning of quote */
 
   #quote h2 {
-    text-align: left;
+    text-align: center;
     width: 90%;
   }
 
@@ -348,8 +495,33 @@
   /* End of amenities */
   #testimonials h2 {
     width: 90%;
-    text-align: left;
+    text-align: center;
   }
+  /* beginning of coaching_tutorial */
+
+  .coaching_container {
+    flex-direction: column;
+  }
+  .coaching_container .video_container {
+    width: 90%;
+  }
+  .coaching_container .coaching_content {
+    width: 90%;
+  }
+  .coaching_content h2 {
+    color: white;
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .coaching_content .coaching_text {
+    line-height: 1.5rem;
+  }
+
+  /* end of coaching_tutorial */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -405,6 +577,31 @@
   /* End of amenities */
   #testimonials h2 {
     width: 90%;
-    text-align: left;
+    text-align: center;
   }
+  /* beginning of coaching_tutorial */
+
+  .coaching_container {
+    flex-direction: column;
+  }
+  .coaching_container .video_container {
+    width: 90%;
+  }
+  .coaching_container .coaching_content {
+    width: 90%;
+  }
+  .coaching_content h2 {
+    color: white;
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .coaching_content .coaching_text {
+    line-height: 1.5rem;
+  }
+
+  /* end of coaching_tutorial */
 }
