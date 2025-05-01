@@ -7,16 +7,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import ReactPlayer from "react-player";
 import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
+import testimonialsVideo from "../../assets/Testimony2.mp4";
 
 const Home = () => {
   const amenities = [
     {
       id: 1,
-      title: "Cardio",
+      title: "Modern Facilities",
     },
     {
       id: 2,
-      title: "Modern Facilities",
+      title: "Premium Classes",
     },
     {
       id: 3,
@@ -24,30 +25,52 @@ const Home = () => {
     },
     {
       id: 4,
+      title: "Induvidual attention",
+    },
+    {
+      id: 5,
+      title: "Security Cameras",
+    },
+  ];
+  const amenities2 = [
+    {
+      id: 1,
+      title: "Personal Nutritiousness",
+    },
+    {
+      id: 2,
+      title: "UFC Live Screening",
+    },
+    {
+      id: 3,
+      title: "On-site First Aid",
+    },
+    {
+      id: 4,
       title: "Lockers",
     },
     {
       id: 5,
-      title: "Crossfit",
+      title: "Free Parking",
     },
   ];
   const testimonials = [
     {
       id: 1,
-      quote:
-        "COMBAT24 WAS CENTRAL IN HELPING ME GAIN THE STAMINA FOR MY RECENT MARATHON.",
-      author: "Sourabh",
+      quote: "Classes are well-structured, intense, and incredibly rewarding.",
+      author: "Sagar",
     },
     {
       id: 2,
       quote:
-        "Thanks to Combat24, I feel stronger and more confident every day!",
-      author: "Priya",
+        "Highly recommended to all the girls who want to learn self-defense and feel confident.",
+      author: "Manya",
     },
     {
       id: 3,
-      quote: "Excellent trainers and equipment! Highly recommend Combat24.",
-      author: "Amit",
+      quote:
+        "Experienced coaches and a top-notch facility. The Muay Thai, Boxing and MMA classes are out of this world.",
+      author: "Jaswanth",
     },
   ];
   return (
@@ -55,7 +78,8 @@ const Home = () => {
       <section id="landing">
         <div className="landing_container">
           <h1 className="Anton">
-            Discipline is the bridge between goals <br /> and accomplishments.
+            Train for Combat. <br />
+            Live with Confidence.
           </h1>
           <button className="nue">JOIN OUR GYM</button>
         </div>
@@ -63,14 +87,16 @@ const Home = () => {
       <section id="quality">
         <div className="quality_container">
           <h2 className="Anton">
-            WE&apos;RE A HIGH QUALITY GYM DEDICATED TO AFFORDABLE HEALTH AND
-            WELLNESS.
+            OUR COMMUNITY IS BUILT ON THE VALUES OF SUPPORT, CREATING A SPACE
+            WHERE HEALTH AND WELLNESS ARE AFFORDABLE TO ALL.
           </h2>
           <p className="nue">
-            Combat 24 is a gym where you come as you are, and do your best. Our
-            membership offers both digital and in-club programming aimed at
-            helping you achieve your fitness goals. Discover all of our
-            club&apos;s offerings below.
+            At Combat 24, we train warriors for life. Offering MMA, Muay Thai,
+            Boxing, Kickboxing, Brazilian Jiu-jitsu, S&C & Crossfit, we focus on
+            techniques and develop total-body strength. Our mission is to make
+            every member feel self-sufficient, empowered, and ready. More than
+            fitness, we instill confidence through combat, every step of the
+            way.
           </p>
         </div>
         <div className="quality_image_container">
@@ -79,10 +105,10 @@ const Home = () => {
       </section>
       <section id="quote">
         <h2 className="Anton">
-          “The resistance that you fight physically in the gym and the
-          resistance that you fight in life can only build a strong character.”
+          “Confidence is not something you&apos;re born with. It&apos;s
+          something you develop. You build it through hard work and preparation”
         </h2>
-        <h4 className="nue">- Arnold Schwarzenegger</h4>
+        <h4 className="nue">- Conor Mcgregor</h4>
       </section>
       <section id="amenities">
         <h2 className="Anton">AMENITIES</h2>
@@ -91,15 +117,27 @@ const Home = () => {
           needs of our community. Something you&apos;d like to see added to our
           list? Submit a request.
         </h4>
-        <div className="amenities_container">
-          {amenities.map((amenity, index) => (
-            <div className="amenity" key={amenity.id}>
-              <p className="nue">{amenity.title}</p>
-              {index !== amenities.length - 1 && (
-                <div className="white_dot"></div>
-              )}
-            </div>
-          ))}
+        <div className="amenities_wrapper">
+          <div className="amenities_container">
+            {amenities.map((amenity, index) => (
+              <div className="amenity" key={amenity.id}>
+                <p className="nue">{amenity.title}</p>
+                {index !== amenities.length - 1 && (
+                  <div className="white_dot"></div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="amenities_container">
+            {amenities2.map((amenity, index) => (
+              <div className="amenity" key={amenity.id}>
+                <p className="nue">{amenity.title}</p>
+                {index !== amenities.length - 1 && (
+                  <div className="white_dot"></div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <section id="coaching_tutorial">
@@ -130,6 +168,35 @@ const Home = () => {
               the club, our expert-led programs are designed to push limits,
               build discipline, and ignite confidence. Explore all we offer and
               take the first step toward your transformation.
+            </h4>
+          </div>
+        </div>
+      </section>
+      <section id="coaching_tutorial">
+        <div className="coaching_container">
+          <div className="video_container">
+            <ReactPlayer
+              url={testimonialsVideo} // replace with your video URL or local path
+              width="100%"
+              height="100%"
+              controls
+              playing={false}
+              loop
+              previewTabIndex={0}
+              config={{
+                file: {
+                  attributes: {
+                    controlsList: "nodownload",
+                  },
+                },
+              }}
+            />
+          </div>
+          <div className="coaching_content">
+            <h2 className="Anton">What People Say</h2>
+            <h4 className="nue coaching_text">
+              Real Stories. Real Results. Confidence Built One Session at a
+              Time.
             </h4>
           </div>
         </div>

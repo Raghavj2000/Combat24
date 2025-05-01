@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { Link, useLocation } from "react-router-dom";
-import { FaFacebook, FaHamburger, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { ExternalLink } from "../../utils/utils";
 import { HiMenu } from "react-icons/hi";
 import { RiCloseLargeFill } from "react-icons/ri";
