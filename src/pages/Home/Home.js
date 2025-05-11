@@ -8,6 +8,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import ReactPlayer from "react-player";
 import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
 import testimonialsVideo from "../../assets/Testimony2.mp4";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const amenities = [
@@ -25,7 +26,7 @@ const Home = () => {
     },
     {
       id: 4,
-      title: "Induvidual attention",
+      title: "Individual attention",
     },
     {
       id: 5,
@@ -35,7 +36,7 @@ const Home = () => {
   const amenities2 = [
     {
       id: 1,
-      title: "Personal Nutritiousness",
+      title: "Personal Nutrition",
     },
     {
       id: 2,
@@ -73,6 +74,7 @@ const Home = () => {
       author: "Jaswanth",
     },
   ];
+  const router = useNavigate();
   return (
     <>
       <section id="landing">
@@ -81,7 +83,9 @@ const Home = () => {
             Train for Combat. <br />
             Live with Confidence.
           </h1>
-          <button className="nue">JOIN OUR GYM</button>
+          <button className="nue" onClick={() => router("/contact")}>
+            JOIN OUR GYM
+          </button>
         </div>
       </section>
       <section id="quality">
@@ -172,8 +176,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section id="coaching_tutorial">
-        <div className="coaching_container">
+      <section id="review_tutorial">
+        <div className="review_container">
           <div className="video_container">
             <ReactPlayer
               url={testimonialsVideo} // replace with your video URL or local path
@@ -192,7 +196,7 @@ const Home = () => {
               }}
             />
           </div>
-          <div className="coaching_content">
+          <div className="review_content">
             <h2 className="Anton">What People Say</h2>
             <h4 className="nue coaching_text">
               Real Stories. Real Results. Confidence Built One Session at a

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { FaWhatsapp } from "react-icons/fa";
@@ -12,13 +12,28 @@ const Schedule = lazy(() => import("./pages/Schedule/Schedule"));
 const Coaches = lazy(() => import("./pages/Coaches/Coaches"));
 const Classes = lazy(() => import("./pages/Classes/Classes"));
 const Merchandise = lazy(() => import("./pages/Merchandise/Merchandise"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const notFoundArr = [
+    "/",
+    "/contact",
+    "/schedule",
+    "/coaches",
+    "/classes",
+    "/merch",
+  ];
+
+  const showUI = notFoundArr.includes(currentPath);
+
   return (
     <>
-      {
+      {showUI && (
         <div
-          className={`whatsapp_container`}
+          className="whatsapp_container"
           onClick={() =>
             window.open(
               "https://wa.me/918073423859",
@@ -29,9 +44,10 @@ function App() {
         >
           <FaWhatsapp size={30} color={"white"} />
         </div>
-      }
+      )}
 
-      <Navbar />
+      {showUI && <Navbar />}
+
       <Suspense fallback={<Loading />}>
         <ScrollResetRoutes>
           <Route path="/" element={<Home />} />
@@ -40,6 +56,7 @@ function App() {
           <Route path="/coaches" element={<Coaches />} />
           <Route path="/classes" element={<Classes />} />
           <Route path="/merch" element={<Merchandise />} />
+          <Route path="*" element={<NotFound />} />
         </ScrollResetRoutes>
       </Suspense>
     </>
