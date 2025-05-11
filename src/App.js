@@ -13,6 +13,7 @@ const Coaches = lazy(() => import("./pages/Coaches/Coaches"));
 const Classes = lazy(() => import("./pages/Classes/Classes"));
 const Merchandise = lazy(() => import("./pages/Merchandise/Merchandise"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
+const About = lazy(() => import("./pages/AboutUs/AboutUs"));
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
     "/coaches",
     "/classes",
     "/merch",
+    "/about",
   ];
 
   const showUI = notFoundArr.includes(currentPath);
@@ -56,6 +58,7 @@ function App() {
           <Route path="/coaches" element={<Coaches />} />
           <Route path="/classes" element={<Classes />} />
           <Route path="/merch" element={<Merchandise />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </ScrollResetRoutes>
       </Suspense>
