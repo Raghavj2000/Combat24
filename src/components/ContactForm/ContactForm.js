@@ -43,16 +43,34 @@ const ContactForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent form submission
-    console.log("Form Data:", formData);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      date: "",
-    });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Email sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          date: "",
+        });
+      } else {
+        alert("Failed to send email. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Something went wrong.");
+    }
   };
 
   return (
