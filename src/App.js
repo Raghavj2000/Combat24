@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { FaWhatsapp } from "react-icons/fa";
 import ScrollResetRoutes from "./utils/ScrollResetRoutes";
 import Loading from "./pages/Loading/Loading";
+import { Toaster } from "react-hot-toast";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -33,6 +34,15 @@ function App() {
 
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            fontFamily: "Anton, sans-serif", // or 'nue' or any custom font
+          },
+        }}
+      />
       {showUI && (
         <div
           className="whatsapp_container"

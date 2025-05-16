@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./contactform.css";
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ const ContactForm = () => {
   };
 
   const handlePhoneKeyDown = (event) => {
-    // Allow: Backspace, Delete, Tab, Escape, Enter, Arrow keys, "+", and shortcuts
     if (
       [
         "Backspace",
@@ -46,7 +46,7 @@ const ContactForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
+    const sendEmail = async () => {
       const response = await fetch(
         "https://combat24backend-1.onrender.com/send-email",
         {
@@ -58,22 +58,26 @@ const ContactForm = () => {
         }
       );
 
-      if (response.ok) {
-        alert("Email sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          date: "",
-        });
-      } else {
-        alert("Failed to send email. Please try again later.");
+      if (!response.ok) {
+        throw new Error("Failed to send email.");
       }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      alert("Something went wrong.");
-    }
+
+      // Reset form only if successful
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        date: "",
+      });
+    };
+
+    // Use toast.promise
+    toast.promise(sendEmail(), {
+      loading: "Sending...",
+      success: "Email sent successfully!",
+      error: "Failed to send email.",
+    });
   };
 
   return (
