@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import baseImg from "../../assets/baseImg.jpg";
+import baseImg from "../../assets/baseImg.webp";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

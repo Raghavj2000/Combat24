@@ -1,7 +1,7 @@
 import React from "react";
 import "./Coaches.css";
 import Footer from "../../components/Footer/Footer";
-import cardioGuy from "../../assets/cardioGuy.jpg";
+import cardioGuy from "../../assets/cardioGuy.webp";
 
 const Coaches = () => {
   const coachesArr = [

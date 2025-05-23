@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import CoachPriya from "../../assets/Coach Priya.jpg";
+import CoachPriya from "../../assets/Coach Priya.webp";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,7 @@ import ReactPlayer from "react-player";
 import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
 import testimonialsVideo from "../../assets/Testimony2.mp4";
 import { useNavigate } from "react-router-dom";
+import websiteVideo from "../../assets/Website_Video.mp4";
 
 const Home = () => {
   const amenities = [
@@ -78,6 +79,12 @@ const Home = () => {
   return (
     <>
       <section id="landing">
+        <div className="video_container_home">
+          <video autoPlay muted loop playsInline className="landing_video">
+            <source src={websiteVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div className="landing_container">
           <h1 className="Anton">
             Train for Combat. <br />

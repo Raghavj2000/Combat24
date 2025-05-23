@@ -1,6 +1,6 @@
 import React from "react";
 import "./NotFound.css";
-import notFound from "../../assets/404Error.png";
+import notFound from "../../assets/404Error.webp";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {

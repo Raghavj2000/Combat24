@@ -1,6 +1,6 @@
 import React from "react";
 import "./Merchandise.css";
-import bottle from "../../assets/Bottle.png";
+import bottle from "../../assets/Bottle.webp";
 import Footer from "../../components/Footer/Footer";
 
 const Merchandise = () => {
@@ -51,9 +51,9 @@ const Merchandise = () => {
         <h2 className="Anton store_title">Store</h2>
         <div className="schedule_line" style={{ width: "90%" }}></div>
         <div className="store_container">
-          {merch.map((item) => {
+          {merch.map((item, index) => {
             return (
-              <div className="store_card">
+              <div className="store_card" key={index}>
                 <div className="store_img">
                   <img src={item.image} alt="" />
                 </div>

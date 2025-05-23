@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
 import Footer from "../../components/Footer/Footer";
-import baseImg from "../../assets/9.jpg";
+import baseImg from "../../assets/9.webp";
 
 const AboutUs = () => {
   return (
