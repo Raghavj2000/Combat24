@@ -174,11 +174,11 @@ const Home = () => {
           <div className="coaching_content">
             <h2 className="Anton">TRAIN WITH PURPOSE</h2>
             <h4 className="nue coaching_text">
-              At Combat 24, every session is more than just a workout — it's a
-              step toward a stronger you. Whether you're joining us online or in
-              the club, our expert-led programs are designed to push limits,
-              build discipline, and ignite confidence. Explore all we offer and
-              take the first step toward your transformation.
+              Unleash your potential through discipline, grit, and world-class
+              training. Whether you're here to get in shape, prepare for your
+              next fight, or just have fun throwing punches — we've got you
+              covered. Our gym welcomes all skill levels and goals with expert
+              coaching, an inclusive vibe, and real results.
             </h4>
           </div>
         </div>
@@ -204,10 +204,11 @@ const Home = () => {
             />
           </div>
           <div className="review_content">
-            <h2 className="Anton">What People Say</h2>
+            <h2 className="Anton">What Our Warriors Have to Say</h2>
             <h4 className="nue coaching_text">
-              Real Stories. Real Results. Confidence Built One Session at a
-              Time.
+              Our members come from all walks of life, each with their own
+              reason to train. Whether it's for confidence, competition, or
+              simply the love of movement — the results speak for themselves.
             </h4>
           </div>
         </div>

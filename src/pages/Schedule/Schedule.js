@@ -85,7 +85,7 @@ const Schedule = () => {
   return (
     <>
       <section id="schedule">
-        <h2 className="Anton schedule_title">Find us in the Gym at.</h2>
+        <h2 className="Anton schedule_title">WEEKLY SCHEDULE</h2>
         {scheduleData.map((schedule, index) => (
           <div className="schedule_wrapper" key={index}>
             <div className="schedule_container" key={index}>

@@ -8,28 +8,24 @@ const AboutUs = () => {
     <>
       <section id="about_us">
         <div className="about_us_text_container">
-          <h2 className="Anton">About Us</h2>
-          <p className="nue">
-            Welcome to Combat24 &mdash; your ultimate fitness destination!
-            &nbsp;We are committed to helping you unlock your full potential and
-            embrace a healthier, stronger lifestyle. With expert trainers,
-            personalized guidance, and a motivating environment, we&apos;re here
-            to support you every step of the way.
-          </p>
+          <h2 className="Anton"> OUR STORY</h2>
+          <p className="nue"></p>
         </div>
       </section>
 
       <section id="why_us">
         <div className="why_us_text_container">
           <div className="why_us_text_content_container">
-            <h3 className="Anton">Why Choose Combat24 Over Other Gyms?</h3>
+            <h3 className="Anton">GET TO KNOW US</h3>
             <p className="nue">
-              Combat24 isn&apos;t just a gym &mdash; it&apos;s a community built
-              around transformation and growth. We offer a holistic approach to
-              fitness with experienced coaches, nutrition plans, and dynamic
-              training programs that are designed to fit all levels. Our
-              results-driven culture and supportive atmosphere set us apart from
-              the rest.
+              Founder and Head Coach Pavan Kumar spent years working in various
+              gyms, helping people transform — whether they were training to get
+              fit or chasing championship dreams. Sourabh, a dedicated student
+              of Pavan Kumar, rose through the ranks to become a national Muay
+              Thai champion. As their bond grew, so did a bigger purpose: to
+              make quality combat sports training affordable and accessible to
+              everyone. With the support of their close friend Arvind Acharya,
+              that vision became a reality.
             </p>
           </div>
         </div>
@@ -45,11 +41,13 @@ const AboutUs = () => {
         <div className="our_mission_text_container">
           <h3 className="Anton">Our Mission</h3>
           <p className="nue">
-            Our mission at Combat24 is to inspire and empower people of all
-            backgrounds to lead healthier, more active lives. We believe in
-            making fitness accessible, inclusive, and enjoyable — breaking
-            barriers and creating opportunities for everyone to thrive through
-            movement and discipline.
+            At Combat 24, our mission is to empower individuals of all
+            backgrounds to unlock their full potential through combat sports. We
+            believe training is more than just physical — it’s a journey of
+            mental strength, confidence, and discipline. We are committed to
+            providing a welcoming, safe, and affordable space where everyone can
+            grow, push limits, and transform their lives inside and outside the
+            gym.
           </p>
         </div>
       </section>
@@ -57,13 +55,14 @@ const AboutUs = () => {
       <section id="why_us">
         <div className="why_us_text_container">
           <div className="why_us_text_content_container">
-            <h3 className="Anton">Tailored Retreats for All Groups</h3>
+            <h3 className="Anton">CORE VALUES</h3>
             <p className="nue">
-              Whether you're a beginner, athlete, or corporate team, our
-              specialized fitness retreats are designed to energize, motivate,
-              and strengthen every participant. Experience customized sessions
-              that blend training, wellness, and camaraderie — all in a setting
-              built for transformation.
+              At Combat 24, we believe that the mat is a level playing field.
+              Whether you're a beginner or a seasoned fighter, young or old,
+              male or female — everyone trains as equals. We lead with respect,
+              support one another, and grow stronger together. Our gym isn’t
+              just a place to train — it’s a community where every punch, every
+              rep, and every win is celebrated as one.
             </p>
           </div>
         </div>

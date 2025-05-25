@@ -86,10 +86,11 @@ const ContactForm = () => {
         <div className="schedule_text_container">
           <h2 className="Anton">SCHEDULE A VISIT</h2>
           <h4 className="nue">
-            Take a free 30-minute tour of either of our location to help you
-            decide if Combat 24 is the right gym for you. You&apos;ll have the
-            opportunity to try equipment, observe classes, and get direct
-            answers to all of your questions.
+            Curious about training with us? Come see the space, meet our
+            coaches, and get a feel for the energy. We welcome everyone —
+            whether you're ready to start or just exploring your options. Book a
+            visit today and let&apos;s talk about how we can help you reach your
+            goals.
           </h4>
         </div>
         <form className="form_container" onSubmit={handleSubmit}>
