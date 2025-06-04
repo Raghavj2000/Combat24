@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
 import Footer from "../../components/Footer/Footer";
-import baseImg from "../../assets/9.webp";
+
 import group from "../../assets/group.webp";
 import group3 from "../../assets/group3.webp";
 import group4 from "../../assets/group4.webp";
