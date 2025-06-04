@@ -2,6 +2,9 @@ import React from "react";
 import "./AboutUs.css";
 import Footer from "../../components/Footer/Footer";
 import baseImg from "../../assets/9.webp";
+import group from "../../assets/group.webp";
+import group3 from "../../assets/group3.webp";
+import group4 from "../../assets/group4.webp";
 
 const AboutUs = () => {
   return (
@@ -30,13 +33,13 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="why_us_image_container">
-          <img src={baseImg} alt="" />
+          <img src={group} alt="" />
         </div>
       </section>
 
       <section id="our_mission">
         <div className="our_mission_image_container">
-          <img src={baseImg} alt="" />
+          <img src={group3} alt="" />
         </div>
         <div className="our_mission_text_container">
           <h3 className="Anton">Our Mission</h3>
@@ -67,7 +70,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="why_us_image_container">
-          <img src={baseImg} alt="" />
+          <img src={group4} alt="" />
         </div>
       </section>
 

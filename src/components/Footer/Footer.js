@@ -2,6 +2,11 @@ import React from "react";
 import "./Footer.css";
 import baseImg from "../../assets/baseImg.webp";
 import { Link } from "react-router-dom";
+import footer1 from "../../assets/footer.webp";
+import footer2 from "../../assets/footer 2.webp";
+import footer3 from "../../assets/footer 3.webp";
+import footer4 from "../../assets/footer 4.webp";
+import foote5 from "../../assets/footer 5.webp";
 
 const Footer = () => {
   const gridImages = [
@@ -11,23 +16,23 @@ const Footer = () => {
     },
     {
       id: 2,
-      image: baseImg,
+      image: footer2,
     },
     {
       id: 3,
-      image: baseImg,
+      image: footer3,
     },
     {
       id: 4,
-      image: baseImg,
+      image: footer4,
     },
     {
       id: 5,
-      image: baseImg,
+      image: foote5,
     },
     {
       id: 6,
-      image: baseImg,
+      image: footer1,
     },
   ];
   return (

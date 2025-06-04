@@ -57,11 +57,11 @@ const Navbar = () => {
       path: "/contact",
       text: "Contact",
     },
-    {
-      id: 4,
-      path: "/merch",
-      text: "Merchandise",
-    },
+    // {
+    //   id: 4,
+    //   path: "/merch",
+    //   text: "Merchandise",
+    // },
   ];
 
   return (

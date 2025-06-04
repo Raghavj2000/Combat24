@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import CoachPriya from "../../assets/Coach Priya.webp";
+import CoachPriya from "../../assets/amaal_main.webp";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";

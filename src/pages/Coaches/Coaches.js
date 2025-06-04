@@ -1,7 +1,10 @@
 import React from "react";
 import "./Coaches.css";
 import Footer from "../../components/Footer/Footer";
-import cardioGuy from "../../assets/image.webp";
+import coach_priya from "../../assets/image.webp";
+import coach_Sourabh from "../../assets/Coach Sourabh.webp";
+import coach_kaustabh from "../../assets/kaustubh_coach.webp";
+import coach_Pavan from "../../assets/pavan_coach.webp";
 
 const Coaches = () => {
   const coachesArr = [
@@ -9,7 +12,7 @@ const Coaches = () => {
       id: 1,
       name: "Pavan Kumar",
       designation: "Head Coach",
-      image: cardioGuy,
+      image: coach_Pavan,
       description:
         "Boasting 12+ years of combat experience, he led Team India to the Muay Thai World Championships in 2023 and 2024.",
     },
@@ -17,7 +20,7 @@ const Coaches = () => {
       id: 2,
       name: "Kausthubh Ramesh",
       designation: "Coach",
-      image: cardioGuy,
+      image: coach_kaustabh,
       description:
         "Currently holds Gold in the South zone Muay Thai Championship Certified nutritionist and S&C Coach",
     },
@@ -25,7 +28,7 @@ const Coaches = () => {
       id: 3,
       name: "Sourabh Patil",
       designation: "Coach",
-      image: cardioGuy,
+      image: coach_Sourabh,
       description:
         "National Muay Thai Champion 2024 Certified in Functional Training and has an experience of over 5 years",
     },
@@ -33,7 +36,7 @@ const Coaches = () => {
       id: 4,
       name: "Priya Yatanoor",
       designation: "Coach",
-      image: cardioGuy,
+      image: coach_priya,
       description:
         "With over 12 years of experience in Strength and Conditioning, she is a former Gold medalist in the National Muay Thai Series.",
     },

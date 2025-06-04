@@ -18,6 +18,10 @@
   height: 70dvh;
   position: relative;
 }
+.coaches_container:hover {
+  outline: 3px solid #ff5733;
+  outline-offset: 1px;
+}
 .coaches_container .coach_image {
   width: 100%;
   height: 100%;
