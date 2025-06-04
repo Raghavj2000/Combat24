@@ -43,7 +43,7 @@ const AboutUs = () => {
           <p className="nue">
             At Combat 24, our mission is to empower individuals of all
             backgrounds to unlock their full potential through combat sports. We
-            believe training is more than just physical — it’s a journey of
+            believe training is more than just physical — it&apos;s a journey of
             mental strength, confidence, and discipline. We are committed to
             providing a welcoming, safe, and affordable space where everyone can
             grow, push limits, and transform their lives inside and outside the
@@ -60,9 +60,9 @@ const AboutUs = () => {
               At Combat 24, we believe that the mat is a level playing field.
               Whether you're a beginner or a seasoned fighter, young or old,
               male or female — everyone trains as equals. We lead with respect,
-              support one another, and grow stronger together. Our gym isn’t
-              just a place to train — it’s a community where every punch, every
-              rep, and every win is celebrated as one.
+              support one another, and grow stronger together. Our gym is&apos;t
+              just a place to train — it&apos;s a community where every punch,
+              every rep, and every win is celebrated as one.
             </p>
           </div>
         </div>
