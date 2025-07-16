@@ -5,7 +5,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/Footer/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import ReactPlayer from "react-player";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
 import testimonialsVideo from "../../assets/Testimony2.mp4";
 import { useNavigate } from "react-router-dom";
@@ -154,22 +154,7 @@ const Home = () => {
       <section id="coaching_tutorial">
         <div className="coaching_container">
           <div className="video_container">
-            <ReactPlayer
-              url={sourabhFighting} // replace with your video URL or local path
-              width="100%"
-              height="100%"
-              controls
-              playing={false}
-              loop
-              previewTabIndex={0}
-              config={{
-                file: {
-                  attributes: {
-                    controlsList: "nodownload",
-                  },
-                },
-              }}
-            />
+            <VideoPlayer src={sourabhFighting} />
           </div>
           <div className="coaching_content">
             <h2 className="Anton">TRAIN WITH PURPOSE</h2>
@@ -186,22 +171,7 @@ const Home = () => {
       <section id="review_tutorial">
         <div className="review_container">
           <div className="video_container">
-            <ReactPlayer
-              url={testimonialsVideo} // replace with your video URL or local path
-              width="100%"
-              height="100%"
-              controls
-              playing={false}
-              loop
-              previewTabIndex={0}
-              config={{
-                file: {
-                  attributes: {
-                    controlsList: "nodownload",
-                  },
-                },
-              }}
-            />
+            <VideoPlayer src={testimonialsVideo} />
           </div>
           <div className="review_content">
             <h2 className="Anton">What Our Warriors Have to Say</h2>

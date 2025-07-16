@@ -1,0 +1,97 @@
+#coaches {
+    padding: 8rem 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .coaches_wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .coaches_container {
+    width: 50dvh;
+    height: 70dvh;
+    position: relative;
+  }
+  .coaches_container:hover {
+    outline: 3px solid #ff5733;
+    outline-offset: 1px;
+  }
+  .coaches_container .coach_image {
+    width: 100%;
+    height: 100%;
+  
+    position: relative;
+  }
+  .coach_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .coaches_container .coach_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .coaches_container .coach_details {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    #coaches {
+      padding: 5rem 0rem;
+    }
+    .coaches_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .coaches_container {
+      width: 90%;
+      height: 70dvh;
+      position: relative;
+    }
+  }
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+    #coaches {
+      padding: 5rem 0rem;
+    }
+    .coaches_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .coaches_container {
+      width: 90%;
+      height: 70dvh;
+      position: relative;
+    }
+  }
+  
