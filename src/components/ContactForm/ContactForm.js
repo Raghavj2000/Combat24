@@ -48,7 +48,7 @@ const ContactForm = () => {
 
     const sendEmail = async () => {
       const response = await fetch(
-        "https://combat24backend.onrender.com/send-email",
+        "https://combat24backend.vercel.app/send-email",
         {
           method: "POST",
           headers: {
