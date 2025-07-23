@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { FaWhatsapp } from "react-icons/fa";
@@ -33,7 +34,7 @@ function App() {
   const showUI = notFoundArr.includes(currentPath);
 
   return (
-    <>
+    <HelmetProvider>
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -72,7 +73,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </ScrollResetRoutes>
       </Suspense>
-    </>
+    </HelmetProvider>
   );
 }
 

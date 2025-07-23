@@ -10,6 +10,7 @@ import sourabhFighting from "../../assets/Sourabh_fighting.mp4";
 import testimonialsVideo from "../../assets/Testimony2.mp4";
 import { useNavigate } from "react-router-dom";
 import websiteVideo from "../../assets/Website_Video.mp4";
+import SEO from "../../components/SEO/SEO";
 
 const Home = () => {
   const amenities = [
@@ -76,8 +77,59 @@ const Home = () => {
     },
   ];
   const router = useNavigate();
+  
+  const homeStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Combat 24",
+    "description": "Premium martial arts and fitness training facility offering MMA, Boxing, Muay Thai, Kickboxing, and fitness classes",
+    "url": "https://combat24.com",
+    "logo": "https://combat24.com/c24Logo.webp",
+    "image": "https://combat24.com/c24Logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No.28, 3rd Floor, Anjanadri Arcade, 1st Main, CBI Road, Ganganagar",
+      "addressLocality": "Bengaluru",
+      "addressRegion": "Karnataka",
+      "postalCode": "560032",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-8073423859",
+    "email": "combat24india@gmail.com",
+    "openingHours": "Mo-Su 06:00-22:00",
+    "priceRange": "$$",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Martial Arts Training",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification", 
+        "name": "Fitness Classes",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Personal Training",
+        "value": true
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/combat.24",
+      "https://www.instagram.com/combat.24"
+    ]
+  };
+
   return (
     <>
+      <SEO
+        title="Combat 24 - Premium Martial Arts & Fitness Training | MMA, Boxing, Muay Thai"
+        description="Join Combat 24 for world-class martial arts training, fitness classes, and personal coaching. MMA, Boxing, Muay Thai, Kickboxing, and more. Transform your fitness journey today."
+        keywords="martial arts, MMA, boxing, muay thai, kickboxing, fitness training, personal coaching, combat sports, self defense, strength training, cardio, martial arts classes, Bengaluru, Bangalore"
+        url="/"
+        structuredData={homeStructuredData}
+      />
       <section id="landing">
         <div className="video_container_home">
           <video autoPlay muted loop playsInline className="landing_video">

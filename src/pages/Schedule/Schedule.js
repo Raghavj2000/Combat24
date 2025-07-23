@@ -2,6 +2,7 @@ import React from "react";
 import "./Schedule.css";
 import scheduleFile from "../../files/schedule.pdf";
 import Footer from "../../components/Footer/Footer";
+import SEO from "../../components/SEO/SEO";
 
 const Schedule = () => {
   const scheduleData = [
@@ -79,9 +80,44 @@ const Schedule = () => {
     },
   ];
   
+  const scheduleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Combat 24 Weekly Schedule",
+    "description": "Weekly martial arts and fitness class schedule including Boxing, Muay Thai, MMA, Kickboxing, Crossfit, and Little Champs classes",
+    "url": "https://combat24.com/schedule",
+    "openingHours": [
+      "Mo 07:00-22:00",
+      "Tu 07:00-22:00", 
+      "We 07:00-22:00",
+      "Th 07:00-22:00",
+      "Fr 07:00-22:00",
+      "Sa 07:00-18:00",
+      "Su 16:30-18:00"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Weekly Class Schedule",
+      "itemListElement": scheduleData.map((day, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": `${day.day} Classes`,
+          "description": day.activities.map(activity => `${activity.title} (${activity.time})`).join(", ")
+        }
+      }))
+    }
+  };
 
   return (
     <>
+      <SEO
+        title="Weekly Class Schedule - Martial Arts & Fitness Classes | Combat 24"
+        description="View our weekly martial arts and fitness class schedule. Boxing, Muay Thai, MMA, Kickboxing, Crossfit, and Little Champs classes available throughout the week in Bengaluru."
+        keywords="martial arts schedule, boxing classes schedule, MMA training schedule, muay thai classes timing, kickboxing schedule, crossfit classes, little champs martial arts, Bengaluru martial arts schedule"
+        url="/schedule"
+        structuredData={scheduleStructuredData}
+      />
       <section id="schedule">
         <h2 className="Anton schedule_title">WEEKLY SCHEDULE</h2>
         {scheduleData.map((schedule, index) => (

@@ -1,14 +1,61 @@
 import React from "react";
 import "./AboutUs.css";
 import Footer from "../../components/Footer/Footer";
+import SEO from "../../components/SEO/SEO";
 
 import group from "../../assets/group.webp";
 import group3 from "../../assets/group3.webp";
 import group4 from "../../assets/group4.webp";
 
 const AboutUs = () => {
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Combat 24",
+    "description": "Combat 24 is a premium martial arts and fitness training facility founded by Head Coach Pavan Kumar and National Muay Thai champion Sourabh Patil.",
+    "url": "https://combat24.com/about",
+    "logo": "https://combat24.com/c24Logo.webp",
+    "image": "https://combat24.com/c24Logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No.28, 3rd Floor, Anjanadri Arcade, 1st Main, CBI Road, Ganganagar",
+      "addressLocality": "Bengaluru",
+      "addressRegion": "Karnataka",
+      "postalCode": "560032",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-8073423859",
+    "email": "combat24india@gmail.com",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Pavan Kumar",
+        "jobTitle": "Head Coach",
+        "description": "Founder and Head Coach with 12+ years of combat experience"
+      },
+      {
+        "@type": "Person", 
+        "name": "Sourabh Patil",
+        "jobTitle": "Coach",
+        "description": "National Muay Thai Champion 2024"
+      }
+    ],
+    "mission": "To empower individuals of all backgrounds to unlock their full potential through combat sports",
+    "sameAs": [
+      "https://www.facebook.com/combat.24",
+      "https://www.instagram.com/combat.24"
+    ]
+  };
+
   return (
     <>
+      <SEO
+        title="About Combat 24 - Our Story, Mission & Values | Martial Arts Training"
+        description="Discover the story behind Combat 24. Founded by Head Coach Pavan Kumar and National Muay Thai champion Sourabh Patil. Learn about our mission to make quality combat sports training accessible to everyone."
+        keywords="about combat 24, martial arts story, pavan kumar coach, sourabh patil muay thai champion, combat sports mission, martial arts values, Bengaluru martial arts"
+        url="/about"
+        structuredData={aboutStructuredData}
+      />
       <section id="about_us">
         <div className="about_us_text_container">
           <h2 className="Anton"> OUR STORY</h2>
