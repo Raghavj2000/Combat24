@@ -5,7 +5,7 @@ import SEO from "../../components/SEO/SEO";
 
 import group from "../../assets/group.webp";
 import group3 from "../../assets/group3.webp";
-import group4 from "../../assets/group4.webp";
+import group4 from "../../assets/c24together.webp";
 
 const AboutUs = () => {
   const aboutStructuredData = {
