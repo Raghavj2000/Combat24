@@ -1,96 +1,182 @@
+/* ============================================
+   COACHES PAGE — Combat 24
+   ============================================ */
+
 #coaches {
-  padding: 8rem 0rem;
+  padding: clamp(5rem, 10vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-12);
+  background-color: var(--c-bg);
 }
+
+/* ── Page heading ── */
+.coaches_page_heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.coaches_label {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+}
+
+.coaches_page_title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ── Cards grid ── */
 .coaches_wrapper {
-  width: 100%;
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: var(--space-6);
   align-items: flex-start;
   justify-content: center;
 }
+
+/* Individual card */
 .coaches_container {
-  width: 50dvh;
-  height: 70dvh;
+  width: clamp(220px, 22vw, 280px);
+  aspect-ratio: 3 / 4;
   position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform    var(--dur-base) var(--ease-out),
+    box-shadow   var(--dur-base) var(--ease-out);
 }
+
 .coaches_container:hover {
-  outline: 3px solid #ff5733;
-  outline-offset: 1px;
+  border-color: var(--c-primary);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(255, 68, 34, 0.18);
 }
+
+/* Image */
 .coaches_container .coach_image {
   width: 100%;
   height: 100%;
-
   position: relative;
 }
+
 .coach_image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
+  transition: transform var(--dur-slow) var(--ease-out),
+              filter  var(--dur-slow) var(--ease-out);
 }
+
+.coaches_container:hover .coach_image img {
+  transform: scale(1.06);
+  filter: brightness(0.45);
+}
+
+/* Dark gradient always-on at bottom */
 .coaches_container .coach_overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.2); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.2)  50%,
+    transparent         100%
+  );
+  z-index: 1;
+  transition: background var(--dur-base) var(--ease-out);
 }
+
+.coaches_container:hover .coach_overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.6)  60%,
+    rgba(0, 0, 0, 0.2)  100%
+  );
+}
+
+/* Text details */
 .coaches_container .coach_details {
-  color: white;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: var(--space-5) var(--space-5);
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
+  transform: translateY(0);
+  transition: transform var(--dur-base) var(--ease-out);
 }
-@media only screen and (min-width: 320px) and (max-width: 480px) {
-  #coaches {
-    padding: 5rem 0rem;
-  }
+
+/* Description slides up into view on hover */
+.coach_description {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height var(--dur-base) var(--ease-out),
+    opacity    var(--dur-base) var(--ease-out);
+}
+
+.coaches_container:hover .coach_description {
+  max-height: 120px;
+  opacity: 1;
+}
+
+.coach_name {
+  color: var(--c-text);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.coach_designation {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
   .coaches_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    gap: 3rem;
-    flex-wrap: wrap;
+    gap: var(--space-4);
   }
+
   .coaches_container {
-    width: 90%;
-    height: 70dvh;
-    position: relative;
+    width: calc(50% - var(--space-2));
+    aspect-ratio: 3 / 4;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px) {
-  #coaches {
-    padding: 5rem 0rem;
-  }
-  .coaches_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
+
+@media (max-width: 480px) {
   .coaches_container {
-    width: 90%;
-    height: 70dvh;
-    position: relative;
+    width: 85%;
+    aspect-ratio: 3 / 4;
   }
 }

@@ -1,140 +1,150 @@
+/* ============================================
+   FOOTER — Combat 24
+   ============================================ */
+
 footer {
-  padding: 5rem 0;
-  background-color: black;
-  color: white;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  border-top: 1px solid var(--c-border);
+  padding: clamp(3rem, 7vh, 6rem) 0 clamp(2rem, 4vh, 3rem);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 5rem;
+  align-items: center;
+  gap: clamp(2.5rem, 5vh, 4rem);
 }
+
+/* ── Location Block ── */
 .location_container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-4);
   text-align: center;
 }
+
 .location_header {
-  letter-spacing: 1px;
-  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  color: var(--c-primary);
+  font-weight: 400;
 }
+
+.location_container p {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* ── Photo Grid ── */
 .footer_image_container {
   width: 100%;
-  height: 22rem;
+  height: 240px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  overflow: hidden;
 }
-.footer_image_container .footer_image {
+
+.footer_image {
   flex: 1;
-  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
-.footer_image_container .footer_image img {
+
+.footer_image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.75) saturate(0.9);
+  transition: filter var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
 }
+
+.footer_image:hover img {
+  filter: brightness(0.95) saturate(1);
+  transform: scale(1.05);
+}
+
+/* ── Divider ── */
+.footer_divider {
+  width: 90%;
+  height: 1px;
+  background-color: var(--c-border);
+}
+
+/* ── Bottom Row ── */
 .copyright_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  max-width: 1300px;
+  gap: var(--space-6);
 }
-.copyright_container .contact_container {
+
+.contact_container {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 1rem;
   flex-direction: column;
+  gap: var(--space-3);
 }
+
+.contact_container h3 {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--c-primary);
+  font-weight: 400;
+}
+
+.contact_container p {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.contact_container p:hover {
+  color: var(--c-text);
+}
+
 .footer_title {
-  color: #ff5733;
+  color: var(--c-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 1px;
+  transition: opacity var(--dur-fast) var(--ease-out);
 }
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+
+.footer_title:hover {
+  opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet and below: grid the images */
+@media (max-width: 1023px) {
   .footer_image_container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
-    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
-    height: auto; /* Let it grow naturally */
+    grid-template-columns: repeat(3, 1fr);
+    height: auto;
   }
 
-  .footer_image_container .footer_image {
-    height: 100%;
-    width: 100%;
-  }
-  .copyright_container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 90%;
-    flex-direction: column-reverse;
-    gap: 3rem;
-  }
-  .copyright_container .contact_container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
+  .footer_image {
+    height: 140px;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px) {
+
+@media (max-width: 600px) {
   .footer_image_container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
-    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
-    height: auto; /* Let it grow naturally */
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .footer_image_container .footer_image {
-    height: 100%;
-    width: 100%;
-  }
-  .copyright_container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 90%;
-    flex-direction: column-reverse;
-    gap: 3rem;
-  }
-  .copyright_container .contact_container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .footer_image_container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
-    grid-auto-rows: 12.5rem; /* Half of 25rem height if you want two rows */
-    height: auto; /* Let it grow naturally */
+  .footer_image {
+    height: 120px;
   }
 
-  .footer_image_container .footer_image {
-    height: 100%;
-    width: 100%;
-  }
   .copyright_container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 90%;
     flex-direction: column-reverse;
-    gap: 3rem;
-  }
-  .copyright_container .contact_container {
-    display: flex;
     align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
+    gap: var(--space-8);
   }
 }

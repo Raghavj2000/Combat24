@@ -62,6 +62,7 @@ function App() {
       {showUI && <Navbar />}
 
       <Suspense fallback={<Loading />}>
+        <div key={location.pathname} className="page-transition">
         <ScrollResetRoutes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
@@ -72,6 +73,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </ScrollResetRoutes>
+        </div>
       </Suspense>
     </HelmetProvider>
   );

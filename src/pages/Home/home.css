@@ -1,25 +1,25 @@
-/* Beginning of landing section */
+/* ============================================
+   HOME PAGE — Combat 24
+   ============================================ */
+
+/* ── HERO / LANDING ──────────────────────── */
 
 #landing {
   position: relative;
   height: 100dvh;
+  min-height: 600px;
   width: 100%;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Video fill */
 .video_container_home {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  inset: 0;
+  z-index: 0;
 }
 
 .video_container_home video {
@@ -27,697 +27,597 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* Multi-layer overlay: darkens bottom for text legibility */
 #landing::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1; /* Ensures it sits on top of the background image */
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.1)  40%,
+    rgba(0, 0, 0, 0.55) 75%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 1;
 }
+
+/* Text + CTA row */
 .landing_container {
+  position: relative;
+  z-index: 2;
   width: 90%;
+  max-width: 1400px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(2rem, 5vh, 4rem);
+  gap: var(--space-6);
 }
+
 .landing_container h1 {
-  color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  z-index: 1;
+  color: var(--c-text);
   text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  max-width: 680px;
 }
-.landing_container button {
-  padding: 1rem 3rem;
-  border: 1px solid white;
-  color: white;
-  border-radius: 3rem;
-  z-index: 1;
+
+/* Hero entrance animations */
+.hero-title {
+  animation: fadeInUp 0.8s var(--ease-out) 0.1s both;
+}
+.hero-cta {
+  animation: fadeInUp 0.8s var(--ease-out) 0.3s both;
+}
+
+/* Hero CTA button */
+.landing_container .btn-hero {
+  flex-shrink: 0;
+  padding: 0.9rem 2.5rem;
+  border: 2px solid var(--c-text);
+  color: var(--c-text);
+  border-radius: var(--radius-full);
   background-color: transparent;
   cursor: pointer;
-  word-spacing: 2px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-family: nue;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
 }
-.landing_container button:hover {
-  background-color: white;
-  color: black;
-}
-/* End of landing section */
 
-/* beginning of quality section */
+.landing_container .btn-hero:hover {
+  background-color: var(--c-primary);
+  border-color: var(--c-primary);
+  color: var(--c-text);
+  transform: translateY(-2px);
+}
+
+.landing_container .btn-hero:active {
+  transform: translateY(0);
+}
+
+/* Scroll indicator */
+.scroll_indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0.6;
+  animation: scrollBounce 2.2s var(--ease-out) infinite;
+}
+
+.scroll_indicator span {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--c-text), transparent);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── QUALITY / STORY ─────────────────────── */
+
 #quality {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 10rem 0;
-  background-color: black;
+  background-color: var(--c-bg);
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  border-top: 1px solid var(--c-border);
 }
+
 .quality_container {
   width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-16);
   flex-wrap: wrap;
-  flex-direction: row;
 }
+
+.quality_text_block {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Red accent bar above heading */
+.quality_text_block::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background-color: var(--c-primary);
+  border-radius: var(--radius-full);
+}
+
 .quality_container h2 {
-  color: white;
-  word-spacing: 1px;
-  letter-spacing: 0.5px;
-  font-weight: 500;
+  color: var(--c-text);
   text-transform: uppercase;
-  flex: 1;
-}
-.quality_container p {
-  color: white;
-  word-spacing: 1px;
+  font-weight: 400;
   letter-spacing: 0.5px;
-  flex: 1;
-  line-height: 1.8rem;
+  line-height: 1.15;
 }
+
+.quality_container p {
+  color: var(--c-text-muted);
+  line-height: 1.8;
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+}
+
 .quality_image_container {
-  width: 50dvh;
-  height: 85dvh;
-  margin-top: 5rem;
+  flex-shrink: 0;
+  width: clamp(220px, 28vw, 360px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
 }
+
 .quality_image_container img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
-/* End of quality section */
-/* Beginning of quote */
+.quality_image_container:hover img {
+  transform: scale(1.04);
+}
+
+/* ── QUOTE ──────────────────────────────── */
+
 #quote {
   width: 100%;
+  background-color: var(--c-bg-raised);
+  padding: clamp(4rem, 8vh, 7rem) 5%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 0rem;
-  background-color: black;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  gap: var(--space-6);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Large decorative quote mark */
+#quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -1rem;
+  left: 5%;
+  font-family: Anton, sans-serif;
+  font-size: clamp(8rem, 15vw, 16rem);
+  color: var(--c-primary);
+  opacity: 0.08;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
 #quote h2 {
-  color: white;
-  word-spacing: 1px;
-  letter-spacing: 0.5px;
-  font-weight: 500;
+  color: var(--c-text);
   text-transform: uppercase;
+  font-weight: 400;
   text-align: center;
-  width: 80%;
-}
-#quote h4 {
-  color: white;
-  word-spacing: 1px;
+  max-width: 860px;
   letter-spacing: 0.5px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+
+#quote h4 {
+  color: var(--c-primary);
   font-weight: 400;
   text-transform: uppercase;
-  text-align: center;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
 }
-/* End of quote */
 
-/* beginning of amenities */
+/* ── AMENITIES ──────────────────────────── */
+
 #amenities {
   width: 100%;
+  background-color: var(--c-bg);
+  padding: clamp(4rem, 8vh, 7rem) 5%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 0rem;
-  background-color: black;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  gap: var(--space-10);
+  border-top: 1px solid var(--c-border);
+}
+
+.amenities_header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
 }
 
 #amenities h2 {
-  color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-  font-weight: 500;
+  color: var(--c-text);
   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
   text-align: center;
+  position: relative;
 }
+
+#amenities h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background-color: var(--c-primary);
+  border-radius: var(--radius-full);
+  margin: var(--space-4) auto 0;
+}
+
 #amenities h4 {
-  color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-  font-weight: 400;
-  text-transform: uppercase;
+  color: var(--c-text-muted);
   text-align: center;
-  width: 50%;
-}
-.amenities_wrapper {
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 5rem;
-}
-.amenities_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-direction: column;
-  margin-top: 3rem;
-}
-.amenity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-direction: column;
-}
-.amenity p {
-  color: white;
-  word-spacing: 2px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-align: center;
-}
-.white_dot {
-  width: 0.3rem;
-  height: 0.3rem;
-  background-color: white;
-  border-radius: 100%;
+  max-width: 480px;
+  line-height: 1.7;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-/* End of amenities */
-
-/* Beginning of Testimonials */
-#testimonials {
-  padding: 2rem 1rem;
-  background: linear-gradient(
-    90deg,
-    rgba(214, 191, 91, 1) 0%,
-    rgba(203, 173, 137, 1) 42%,
-    rgba(166, 173, 160, 1) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 2rem;
+/* ── Marquee Ticker ── */
+.amenities_ticker_wrap {
   width: 100%;
+  overflow: hidden;
+  /* Fade edges for a premium feel */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  padding: var(--space-4) 0;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
 }
 
-#testimonials h2 {
-  color: white;
-  font-size: 2.2rem;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  line-height: 1.5;
+.amenities_ticker_wrap.ticker-active {
+  opacity: 1;
+}
+
+.amenities_ticker {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.amenities_ticker_wrap:hover .amenities_ticker {
+  animation-play-state: paused;
+}
+
+.ticker_item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 clamp(1rem, 2.5vw, 2rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.ticker_item:hover {
+  color: var(--c-text);
+}
+
+.ticker_sep {
+  color: var(--c-primary);
+  margin-left: clamp(1rem, 2.5vw, 2rem);
+  font-size: 1rem;
+}
+
+/* Hide old static list elements */
+.amenities_wrapper,
+.white_dot { display: none; }
+
+/* ── COACHING / VIDEO SECTIONS ──────────── */
+
+.video_section {
+  width: 100%;
+  background-color: var(--c-bg);
+  padding: clamp(4rem, 8vh, 7rem) 5%;
+  border-top: 1px solid var(--c-border);
+}
+
+.video_section_inner {
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 5rem);
 }
 
-#testimonials h4 {
-  color: white;
-  font-size: 1.2rem;
+.video_section_inner.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Video panel */
+.video_section_inner .video_container {
+  flex-shrink: 0;
+  width: clamp(240px, 30vw, 380px);
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Content panel */
+.video_section_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 240px;
+}
+
+.section_label {
+  font-family: nue;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-primary);
   font-weight: 400;
-  letter-spacing: 1px;
-  margin-top: 1rem;
-  width: 100%;
 }
 
-/* Swiper full-width */
+.video_section_content h2 {
+  color: var(--c-text);
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.video_section_content h4 {
+  color: var(--c-text-muted);
+  font-weight: 400;
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+}
+
+/* ── TESTIMONIALS ───────────────────────── */
+
+#testimonials {
+  width: 100%;
+  background-color: var(--c-bg-raised);
+  padding: clamp(4rem, 8vh, 6rem) 5%;
+  border-top: 1px solid var(--c-border);
+}
+
+.testimonials_header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.testimonials_header p.section_label {
+  font-family: nue;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+  margin-bottom: var(--space-3);
+}
+
+.testimonials_header h2 {
+  color: var(--c-text);
+  font-weight: 400;
+}
+
+/* Swiper overrides */
 .swiper {
   width: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem !important;
 }
 
-/* Testimonial slide */
 .testimonial_slide {
-  padding: 2rem 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  padding: var(--space-10) clamp(1rem, 8%, 6rem);
+  text-align: center;
+}
+
+.testimonial_slide h2 {
+  color: var(--c-text);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  max-width: 760px;
+  margin: 0 auto var(--space-5);
+}
+
+.testimonial_slide h4 {
+  color: var(--c-primary);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Navigation arrows */
 .swiper-button-next,
 .swiper-button-prev {
-  color: white;
-  top: 50%;
-  transform: translateY(-50%);
+  color: var(--c-text-muted) !important;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--c-primary) !important;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 22px;
+  font-size: 18px !important;
 }
 
-/* Pagination */
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 2rem;
-  text-align: center;
-}
-
+/* Pagination dots */
 .swiper-pagination-bullet {
-  width: 14px;
-  height: 14px;
-  background: white;
-  opacity: 0.6;
-  margin: 0 6px !important;
-  transition: opacity 0.3s ease;
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--c-border-light) !important;
+  opacity: 1 !important;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out) !important;
 }
 
 .swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #fff;
+  background: var(--c-primary) !important;
+  transform: scale(1.3);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  #testimonials h2 {
-    font-size: 1.6rem;
-  }
+/* ── LEGACY IDs (used by old JS, kept for compat) ── */
 
-  #testimonials h4 {
-    font-size: 1rem;
-  }
-
-  .testimonial_slide {
-    padding: 1.5rem 1rem;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
-}
-
-/* end of Testimonials */
-
-/* beginning of coaching_tutorial */
-
-#coaching_tutorial {
-  padding: 5rem 1rem;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 2rem;
-  width: 100%;
-}
-.coaching_container {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-}
-.coaching_container .video_container {
-  width: 30rem;
-  height: 40rem;
-}
-.coaching_container .coaching_content {
-  width: 30rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  text-align: left;
-}
-.coaching_content h2 {
-  color: white;
-  font-size: 2.2rem;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 0 auto;
-  width: 100%;
-}
-.coaching_content h4 {
-  color: white;
-
-  font-weight: 400;
-  letter-spacing: 1px;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-/* end of coaching_tutorial */
-
-/* beginning of review_tutorial */
-
+#coaching_tutorial,
 #review_tutorial {
-  padding: 5rem 1rem;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 2rem;
-  width: 100%;
+  /* Handled by .video_section now */
+  display: contents;
 }
+
+.coaching_container,
 .review_container {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-direction: row-reverse;
-}
-.review_container .video_container {
-  width: 30rem;
-  height: 40rem;
-}
-.review_container .review_content {
-  width: 30rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  text-align: right;
-}
-.review_content h2 {
-  color: white;
-  font-size: 2.2rem;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 0 auto;
-  width: 100%;
-}
-.review_content h4 {
-  color: white;
-
-  font-weight: 400;
-  letter-spacing: 1px;
-  margin-top: 1rem;
-  width: 100%;
+  /* Handled by .video_section_inner */
+  display: contents;
 }
 
-/* end of review_tutorial */
+.coaching_content,
+.review_content {
+  display: contents;
+}
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
   .landing_container {
-    width: 90%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
     flex-direction: column;
-    margin-bottom: 3rem;
-    gap: 2rem;
-  }
-  #quality {
-    padding: 5rem 0;
+    align-items: flex-start;
+    gap: var(--space-5);
+    margin-bottom: 2rem;
   }
 
   .quality_container {
-    gap: 3rem;
-    flex-wrap: wrap;
     flex-direction: column;
   }
-  .quality_container p {
-    line-height: 1.5rem;
-  }
+
   .quality_image_container {
-    width: 90%;
-    height: 100%;
-    margin-top: 5rem;
-  }
-  .quality_image_container img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  /* Beginning of quote */
-
-  #quote h2 {
-    text-align: center;
-    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
   }
 
-  /* End of quote */
-  /* beginning of amenities */
-
-  #amenities h4 {
-    color: white;
-    word-spacing: 2px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: left;
-    width: 90%;
-  }
   .amenities_wrapper {
     flex-direction: column;
-  }
-  .amenities_container {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
-    margin-top: 2rem;
+    gap: var(--space-6);
   }
 
-  /* End of amenities */
-
-  #testimonials h2 {
-    width: 90%;
-    text-align: center;
-  }
-  /* beginning of coaching_tutorial */
-
-  .coaching_container {
+  .video_section_inner,
+  .video_section_inner.reverse {
     flex-direction: column;
   }
-  .coaching_container .video_container {
-    width: 90%;
-  }
-  .coaching_container .coaching_content {
-    width: 90%;
-  }
-  .coaching_content h2 {
-    color: white;
-    font-size: 2.2rem;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin: 0 auto;
+
+  .video_section_inner .video_container {
     width: 100%;
-  }
-  .coaching_content .coaching_text {
-    line-height: 1.5rem;
+    max-width: 340px;
+    aspect-ratio: 9 / 16;
   }
 
-  /* end of coaching_tutorial */
-
-  .review_container {
-    flex-direction: column;
-  }
-  .review_container .video_container {
-    width: 90%;
-  }
-  .review_container .review_content {
-    width: 90%;
+  .video_section_content {
     text-align: left;
   }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 767px) {
+/* Tablet (481–1023px) */
+@media (min-width: 481px) and (max-width: 1023px) {
   .landing_container {
-    width: 90%;
-    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-bottom: 3rem;
-    gap: 2rem;
+    gap: var(--space-5);
+    margin-bottom: 2.5rem;
   }
-  #quality {
-    padding: 5rem 0;
-  }
+
   .quality_container {
-    gap: 3rem;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .quality_container p {
-    line-height: 1.5rem;
-  }
-  /* Beginning of quote */
-
-  #quote h2 {
-    text-align: center;
-    width: 90%;
-  }
-
-  /* End of quote */
-  /* beginning of amenities */
-
-  #amenities h4 {
-    color: white;
-    word-spacing: 2px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: left;
-    width: 90%;
-  }
-  .amenities_wrapper {
     flex-direction: column;
   }
-  .amenities_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
-    margin-top: 2rem;
+
+  .quality_image_container {
+    width: 60%;
+    max-width: 320px;
   }
 
-  /* End of amenities */
-  #testimonials h2 {
-    width: 90%;
-    text-align: center;
-  }
-  /* beginning of coaching_tutorial */
-
-  .coaching_container {
+  .video_section_inner,
+  .video_section_inner.reverse {
     flex-direction: column;
   }
-  .coaching_container .video_container {
-    width: 90%;
+
+  .video_section_inner .video_container {
+    width: 70%;
+    max-width: 360px;
   }
-  .coaching_container .coaching_content {
-    width: 90%;
-  }
-  .coaching_content h2 {
-    color: white;
-    font-size: 2.2rem;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin: 0 auto;
+
+  .video_section_content {
     width: 100%;
-  }
-  .coaching_content .coaching_text {
-    line-height: 1.5rem;
-  }
-
-  /* end of coaching_tutorial */
-  .review_container {
-    flex-direction: column;
-  }
-  .review_container .video_container {
-    width: 90%;
-  }
-  .review_container .review_content {
-    width: 90%;
     text-align: left;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .landing_container {
-    width: 90%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-bottom: 3rem;
-    gap: 2rem;
-  }
-  #quality {
-    padding: 5rem 0;
-  }
-  .quality_container {
-    gap: 3rem;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .quality_container p {
-    line-height: 1.5rem;
-  }
-  /* Beginning of quote */
-
-  #quote h2 {
-    text-align: left;
-    width: 90%;
-  }
-
-  /* End of quote */
-  /* beginning of amenities */
-
-  #amenities h4 {
-    color: white;
-    word-spacing: 2px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: left;
-    width: 90%;
-  }
-  .amenities_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-direction: column;
-    margin-top: 2rem;
-  }
-
-  /* End of amenities */
-  #testimonials h2 {
-    width: 90%;
-    text-align: center;
-  }
-  /* beginning of coaching_tutorial */
-
-  .coaching_container {
-    flex-direction: column;
-  }
-  .coaching_container .video_container {
-    width: 90%;
-  }
-  .coaching_container .coaching_content {
-    width: 90%;
-  }
-  .coaching_content h2 {
-    color: white;
-    font-size: 2.2rem;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .coaching_content .coaching_text {
-    line-height: 1.5rem;
-  }
-
-  /* end of coaching_tutorial */
-  .review_container {
-    flex-direction: column;
-  }
-  .review_container .video_container {
-    width: 90%;
-  }
-  .review_container .review_content {
-    width: 90%;
-    text-align: left;
-  }
-}
+/* Mobile hero: show logo fallback when video is hidden */
 @media (max-width: 768px) {
   #landing {
     background-image: url(../../assets/c24Logo.webp);
+    background-size: cover;
+    background-position: center;
   }
   .video_container_home {
     display: none;

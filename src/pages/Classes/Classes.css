@@ -1,97 +1,173 @@
-#coaches {
-    padding: 8rem 0rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* ============================================
+   CLASSES PAGE — Combat 24
+   ============================================ */
+
+#classes-page {
+  padding: clamp(5rem, 10vh, 8rem) 5% clamp(4rem, 8vh, 6rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  background-color: var(--c-bg);
+  min-height: 100dvh;
+}
+
+/* ── Page heading ── */
+.classes_page_heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.classes_label {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+}
+
+.classes_page_title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ── Cards grid ── */
+.classes_grid {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+/* Individual card */
+.class_card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform    var(--dur-base) var(--ease-out),
+    box-shadow   var(--dur-base) var(--ease-out);
+}
+
+.class_card:hover {
+  border-color: var(--c-primary);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(255, 68, 34, 0.18);
+}
+
+/* Image */
+.class_card_image {
+  position: absolute;
+  inset: 0;
+}
+
+.class_card_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-slow) var(--ease-out),
+              filter  var(--dur-slow) var(--ease-out);
+}
+
+.class_card:hover .class_card_image img {
+  transform: scale(1.07);
+  filter: brightness(0.4);
+}
+
+/* Gradient overlay */
+.class_card_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.25) 55%,
+    transparent         100%
+  );
+  transition: background var(--dur-base) var(--ease-out);
+}
+
+.class_card:hover .class_card_overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.65) 60%,
+    rgba(0, 0, 0, 0.1)  100%
+  );
+}
+
+/* Text details */
+.class_card_details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-5);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.class_card_name {
+  color: var(--c-text);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Description hidden until hover */
+.class_card_desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height var(--dur-slow) var(--ease-out),
+    opacity    var(--dur-base) var(--ease-out);
+}
+
+.class_card:hover .class_card_desc {
+  max-height: 100px;
+  opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .classes_grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  .coaches_wrapper {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    align-items: flex-start;
-    justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .classes_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
-  .coaches_container {
-    width: 50dvh;
-    height: 70dvh;
-    position: relative;
+}
+
+@media (max-width: 400px) {
+  .classes_grid {
+    grid-template-columns: 1fr;
   }
-  .coaches_container:hover {
-    outline: 3px solid #ff5733;
-    outline-offset: 1px;
+
+  .class_card {
+    aspect-ratio: 4 / 3;
   }
-  .coaches_container .coach_image {
-    width: 100%;
-    height: 100%;
-  
-    position: relative;
-  }
-  .coach_image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .coaches_container .coach_overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.2); */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .coaches_container .coach_details {
-    color: white;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  @media only screen and (min-width: 320px) and (max-width: 480px) {
-    #coaches {
-      padding: 5rem 0rem;
-    }
-    .coaches_wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      flex-direction: column;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .coaches_container {
-      width: 90%;
-      height: 70dvh;
-      position: relative;
-    }
-  }
-  @media only screen and (min-width: 481px) and (max-width: 767px) {
-    #coaches {
-      padding: 5rem 0rem;
-    }
-    .coaches_wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      flex-direction: column;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .coaches_container {
-      width: 90%;
-      height: 70dvh;
-      position: relative;
-    }
-  }
-  
+}

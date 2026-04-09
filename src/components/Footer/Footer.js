@@ -10,56 +10,42 @@ import foote5 from "../../assets/footer 5.webp";
 
 const Footer = () => {
   const gridImages = [
-    {
-      id: 1,
-      image: baseImg,
-    },
-    {
-      id: 2,
-      image: footer2,
-    },
-    {
-      id: 3,
-      image: footer3,
-    },
-    {
-      id: 4,
-      image: footer4,
-    },
-    {
-      id: 5,
-      image: foote5,
-    },
-    {
-      id: 6,
-      image: footer1,
-    },
+    { id: 1, image: baseImg,  alt: "Combat 24 gym floor" },
+    { id: 2, image: footer2,  alt: "Combat 24 training session" },
+    { id: 3, image: footer3,  alt: "Combat 24 members" },
+    { id: 4, image: footer4,  alt: "Combat 24 class in action" },
+    { id: 5, image: foote5,   alt: "Combat 24 coaching" },
+    { id: 6, image: footer1,  alt: "Combat 24 facility" },
   ];
+
   return (
     <footer>
       <div className="location_container">
-        <h3 className="Anton location_header">BENGALURU</h3>
+        <h3 className="Anton location_header">Bengaluru</h3>
         <p className="nue">
           No.28, 3rd Floor,
-          <br /> Anjanadri Arcade, 1st Main,
-          <br /> CBI Road, Ganganagar, Bengaluru-560032
+          <br />Anjanadri Arcade, 1st Main,
+          <br />CBI Road, Ganganagar, Bengaluru&nbsp;560032
         </p>
       </div>
-      <div className="footer_image_container">
-        {gridImages.map((image) => (
-          <div key={image.id} className="footer_image">
-            <img src={image.image} alt="" />
+
+      <div className="footer_image_container" aria-label="Combat 24 photo gallery">
+        {gridImages.map((img) => (
+          <div key={img.id} className="footer_image">
+            <img src={img.image} alt={img.alt} loading="lazy" />
           </div>
         ))}
       </div>
-      <div style={{ width: "90%", height: "1px", background: "white" }}></div>
+
+      <div className="footer_divider" role="separator" />
+
       <div className="copyright_container">
         <div className="contact_container">
-          <h3 className="Anton">CONTACT US</h3>
-          <p className="nue">+91 8073423859</p>
+          <h3 className="Anton">Contact Us</h3>
+          <p className="nue">+91&nbsp;8073423859</p>
           <p className="nue">combat24india@gmail.com</p>
         </div>
-        <Link to="/">
+        <Link to="/" aria-label="Combat 24 — Back to home">
           <h2 className="Anton footer_title">COMBAT 24</h2>
         </Link>
       </div>

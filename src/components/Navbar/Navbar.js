@@ -18,22 +18,19 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto"; // cleanup on unmount
-    };
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const navLinks = [
     {
@@ -42,70 +39,62 @@ const Navbar = () => {
       text: "About",
       sublinks: [
         { id: 1, path: "/about", text: "Our Story" },
-        { id: 2, path: "/coaches", text: "Coaches" },
         { id: 3, path: "/classes", text: "Classes" },
-        // { id: 4, path: "/gallery", text: "Gallery" },
       ],
     },
-    {
-      id: 1,
-      path: "/schedule",
-      text: "Schedule",
-    },
-    {
-      id: 3,
-      path: "/contact",
-      text: "Contact",
-    },
-    // {
-    //   id: 4,
-    //   path: "/merch",
-    //   text: "Merchandise",
-    // },
+    { id: 1, path: "/schedule", text: "Schedule" },
+    { id: 3, path: "/contact",  text: "Contact" },
   ];
+
+  const navClass = `navbar_container${
+    (pathname === "/" || pathname === "/about") && scrolled
+      ? " scrolled"
+      : isWhiteNav
+      ? " scrollwhite"
+      : ""
+  }`;
+
+  const mobileNavClass = `mobile_nav_container${
+    (pathname === "/" || pathname === "/about") && scrolled
+      ? " scrolled"
+      : isWhiteNav
+      ? " scrollwhite"
+      : ""
+  }`;
+
+  const iconColor = isWhiteNav ? "black" : "white";
 
   return (
     <>
-      <div
-        className={`navbar_container ${
-          (pathname === "/" || pathname === "/about") && scrolled
-            ? "scrolled"
-            : isWhiteNav
-            ? "scrollwhite"
-            : ""
-        }`}
-      >
-        <Link to="/">
-          <h2
-            className="Anton header_title"
-            style={{ color: isWhiteNav && "black" }}
-          >
-            COMBAT 24
-          </h2>
+      {/* ── Desktop Navbar ── */}
+      <header className={navClass} role="banner">
+        <Link to="/" aria-label="Combat 24 — Home">
+          <h2 className="Anton header_title">COMBAT 24</h2>
         </Link>
 
-        <nav className="nav_container">
+        <nav className="nav_container" aria-label="Main navigation">
           {navLinks.map((link) => (
             <div className="nav_link_item" key={link.id}>
               {link.sublinks ? (
-                <div className="dropdown">
-                  <div className="dropdown_trigger">
-                    <p className="nue" style={{ color: isWhiteNav && "black" }}>
+                <div className="dropdown" role="navigation" aria-label="About submenu">
+                  <div className="dropdown_trigger" tabIndex={0} aria-haspopup="true">
+                    <p
+                      className={`nue${
+                        link.sublinks.some((s) => s.path === pathname) ? " active-link" : ""
+                      }`}
+                      style={{ color: isWhiteNav ? "black" : undefined }}
+                    >
                       {link.text}
                     </p>
                   </div>
-                  <div
-                    className="dropdown_menu"
-                    style={{
-                      backgroundColor: isWhiteNav ? "black" : "white",
-                      color: isWhiteNav ? "white" : "black",
-                    }}
-                  >
+                  <div className="dropdown_menu" role="menu">
                     {link.sublinks.map((sublink) => (
                       <Link
                         to={sublink.path}
                         key={sublink.id}
-                        className={`dropdown_item nue ${isWhiteNav && "black"}`}
+                        className="dropdown_item nue"
+                        role="menuitem"
+                        style={{ color: isWhiteNav ? "#333" : undefined }}
                       >
                         {sublink.text}
                       </Link>
@@ -113,8 +102,11 @@ const Navbar = () => {
                   </div>
                 </div>
               ) : (
-                <Link to={link.path}>
-                  <p className="nue" style={{ color: isWhiteNav && "black" }}>
+                <Link to={link.path} aria-current={pathname === link.path ? "page" : undefined}>
+                  <p
+                    className={`nue${pathname === link.path ? " active-link" : ""}`}
+                    style={{ color: isWhiteNav ? "black" : undefined }}
+                  >
                     {link.text}
                   </p>
                 </Link>
@@ -124,65 +116,58 @@ const Navbar = () => {
         </nav>
 
         <div className="social_container">
-          <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
-            <FaInstagram color={isWhiteNav ? "black" : "white"} size={30} />
+          <ExternalLink
+            href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D"
+            aria-label="Follow Combat 24 on Instagram"
+          >
+            <FaInstagram color={iconColor} size={26} />
           </ExternalLink>
-          <ExternalLink href="https://www.facebook.com/share/1659Y8bfk7/">
-            <FaFacebook color={isWhiteNav ? "black" : "white"} size={30} />
+          <ExternalLink
+            href="https://www.facebook.com/share/1659Y8bfk7/"
+            aria-label="Follow Combat 24 on Facebook"
+          >
+            <FaFacebook color={iconColor} size={26} />
           </ExternalLink>
         </div>
-      </div>
+      </header>
 
-      <div
-        className={`mobile_nav_container ${
-          (pathname === "/" || pathname === "/about") && scrolled
-            ? "scrolled"
-            : isWhiteNav
-            ? "scrollwhite"
-            : ""
-        }`}
-      >
-        <Link to="/" onClick={() => setMenuOpen(false)}>
-          <h2
-            className="Anton header_title"
-            style={{ color: isWhiteNav && "black" }}
-          >
-            COMBAT 24
-          </h2>
+      {/* ── Mobile Navbar ── */}
+      <div className={mobileNavClass} role="banner">
+        <Link to="/" onClick={() => setMenuOpen(false)} aria-label="Combat 24 — Home">
+          <h2 className="Anton header_title">COMBAT 24</h2>
         </Link>
-        {menuOpen ? (
-          <RiCloseLargeFill
-            color={isWhiteNav ? "black" : "white"}
-            size={25}
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-        ) : (
-          <HiMenu
-            color={isWhiteNav ? "black" : "white"}
-            size={25}
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-        )}
+        <button
+          className="mobile_menu_toggle"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          style={{ background: "none", border: "none", padding: "8px", cursor: "pointer" }}
+        >
+          {menuOpen ? (
+            <RiCloseLargeFill color={iconColor} size={24} />
+          ) : (
+            <HiMenu color={iconColor} size={26} />
+          )}
+        </button>
       </div>
 
-      <div
-        className={`mobile_menu ${
-          pathname === "/" || pathname === "/about" ? "bgBlack" : ""
-        }`}
-        style={{
-          left: menuOpen ? "0" : "-100%",
-        }}
+      {/* ── Mobile Menu Drawer ── */}
+      <nav
+        id="mobile-menu"
+        className={`mobile_menu${pathname === "/" || pathname === "/about" ? " bgBlack" : ""}`}
+        style={{ left: menuOpen ? "0" : "-100%" }}
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
       >
         {navLinks.map((link) => (
           <div key={link.id} className="mobile_nav_item">
             {link.path ? (
               <Link to={link.path} onClick={() => setMenuOpen(false)}>
                 <h3
-                  className={`Anton main_link ${
-                    pathname === "/" || pathname === "/about"
-                      ? "colorWhite"
-                      : ""
-                  }`}
+                  className={`Anton main_link${
+                    pathname === "/" || pathname === "/about" ? " colorWhite" : ""
+                  }${pathname === link.path ? " active-link" : ""}`}
                 >
                   {link.text}
                 </h3>
@@ -190,10 +175,8 @@ const Navbar = () => {
             ) : (
               <div className="dropdown_group">
                 <h3
-                  className={`Anton main_link ${
-                    pathname === "/" || pathname === "/about"
-                      ? "colorWhite"
-                      : ""
+                  className={`Anton main_link${
+                    pathname === "/" || pathname === "/about" ? " colorWhite" : ""
                   }`}
                 >
                   {link.text}
@@ -203,11 +186,9 @@ const Navbar = () => {
                     <Link
                       key={sublink.id}
                       to={sublink.path}
-                      className={`nue sub_link ${
-                        pathname === "/" || pathname === "/about"
-                          ? "colorWhite"
-                          : ""
-                      }`}
+                      className={`nue sub_link${
+                        pathname === "/" || pathname === "/about" ? " colorWhite" : ""
+                      }${pathname === sublink.path ? " active-link" : ""}`}
                       onClick={() => setMenuOpen(false)}
                     >
                       {sublink.text}
@@ -220,14 +201,20 @@ const Navbar = () => {
         ))}
 
         <div className="social_container_mob">
-          <ExternalLink href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D">
-            <FaInstagram color={isWhiteNav ? "black" : "white"} size={30} />
+          <ExternalLink
+            href="https://www.instagram.com/combat.24?igsh=MTIzZ2ZpN3V1dms2cA%3D%3D"
+            aria-label="Follow Combat 24 on Instagram"
+          >
+            <FaInstagram color={iconColor} size={28} />
           </ExternalLink>
-          <ExternalLink href="https://www.facebook.com/share/1659Y8bfk7/">
-            <FaFacebook color={isWhiteNav ? "black" : "white"} size={30} />
+          <ExternalLink
+            href="https://www.facebook.com/share/1659Y8bfk7/"
+            aria-label="Follow Combat 24 on Facebook"
+          >
+            <FaFacebook color={iconColor} size={28} />
           </ExternalLink>
         </div>
-      </div>
+      </nav>
     </>
   );
 };
