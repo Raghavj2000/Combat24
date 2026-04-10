@@ -1,47 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Coaches.css";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
 import useInView from "../../utils/useInView";
-import coach_priya    from "../../assets/Coach Priya.webp";
-import coach_Sourabh  from "../../assets/Coach Sourabh.webp";
-import coach_kaustabh from "../../assets/kaustubh_coach.webp";
-import coach_Pavan    from "../../assets/pavan_coach.webp";
-
-const coachesArr = [
-  {
-    id: 1,
-    name: "Pavan Kumar",
-    designation: "Head Coach",
-    image: coach_Pavan,
-    description:
-      "Boasting 12+ years of combat experience, he led Team India to the Muay Thai World Championships in 2023 and 2024.",
-  },
-  {
-    id: 2,
-    name: "Kausthubh Ramesh",
-    designation: "Coach",
-    image: coach_kaustabh,
-    description:
-      "Currently holds Gold in the South zone Muay Thai Championship. Certified nutritionist and S&C Coach.",
-  },
-  {
-    id: 3,
-    name: "Sourabh Patil",
-    designation: "Coach",
-    image: coach_Sourabh,
-    description:
-      "National Muay Thai Champion 2024. Certified in Functional Training with over 5 years of experience.",
-  },
-  {
-    id: 4,
-    name: "Priya Yatanoor",
-    designation: "Coach",
-    image: coach_priya,
-    description:
-      "With over 12 years of experience in Strength and Conditioning, she is a former Gold medalist in the National Muay Thai Series.",
-  },
-];
+import { COACHES_DATA } from "../../data/coachesData";
 
 const Coaches = () => {
   const [headingRef, headingVisible] = useInView(0.3);
@@ -52,8 +15,8 @@ const Coaches = () => {
     "@type": "ItemList",
     name: "Combat 24 Coaches",
     url: "https://combat24.com/coaches",
-    numberOfItems: 4,
-    itemListElement: coachesArr.map((c, i) => ({
+    numberOfItems: COACHES_DATA.length,
+    itemListElement: COACHES_DATA.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
@@ -88,10 +51,12 @@ const Coaches = () => {
 
         {/* Cards grid */}
         <div className="coaches_wrapper" ref={gridRef}>
-          {coachesArr.map((coach, i) => (
-            <div
+          {COACHES_DATA.map((coach, i) => (
+            <Link
               key={coach.id}
+              to={`/coaches/${coach.slug}`}
               className={`coaches_container reveal stagger-${i + 1}${gridVisible ? " visible" : ""}`}
+              aria-label={`View ${coach.name}'s profile`}
             >
               <div className="coach_image">
                 <div className="coach_overlay" />
@@ -106,7 +71,7 @@ const Coaches = () => {
                 <p className="coach_designation nue">{coach.designation}</p>
                 <p className="coach_description nue">{coach.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

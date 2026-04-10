@@ -16,6 +16,8 @@ const Classes = lazy(() => import("./pages/Classes/Classes"));
 const Merchandise = lazy(() => import("./pages/Merchandise/Merchandise"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 const About = lazy(() => import("./pages/AboutUs/AboutUs"));
+const CoachProfile = lazy(() => import("./pages/CoachProfile/CoachProfile"));
+const ClassProfile = lazy(() => import("./pages/ClassProfile/ClassProfile"));
 
 function App() {
   const location = useLocation();
@@ -31,7 +33,10 @@ function App() {
     "/about",
   ];
 
-  const showUI = notFoundArr.includes(currentPath);
+  const showUI =
+    notFoundArr.includes(currentPath) ||
+    currentPath.startsWith("/coaches/") ||
+    currentPath.startsWith("/classes/");
 
   return (
     <HelmetProvider>
@@ -71,6 +76,8 @@ function App() {
           <Route path="/classes" element={<Classes />} />
           <Route path="/merch" element={<Merchandise />} />
           <Route path="/about" element={<About />} />
+          <Route path="/coaches/:slug" element={<CoachProfile />} />
+          <Route path="/classes/:slug" element={<ClassProfile />} />
           <Route path="*" element={<NotFound />} />
         </ScrollResetRoutes>
         </div>

@@ -1,0 +1,403 @@
+/* ============================================
+   CLASS PROFILE PAGE — Combat 24
+   ============================================ */
+
+/* ── Hero ── */
+.clp_hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 560px;
+  overflow: hidden;
+  background-color: var(--c-bg);
+}
+
+.clp_hero_img {
+  position: absolute;
+  inset: 0;
+}
+
+.clp_hero_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.clp_hero_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.97) 0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.5)  100%
+  );
+}
+
+/* Back link */
+.clp_back {
+  position: absolute;
+  top: calc(var(--space-8) + 72px);
+  left: var(--space-10);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--c-text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.clp_back:hover {
+  color: var(--c-primary);
+}
+
+/* Hero text */
+.clp_hero_content {
+  position: absolute;
+  bottom: clamp(var(--space-10), 8vh, var(--space-16));
+  left: var(--space-10);
+  z-index: 2;
+}
+
+.clp_hero_tagline {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+  margin-bottom: var(--space-3);
+}
+
+.clp_hero_name {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  color: var(--c-text);
+  font-weight: 400;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* ── Shared section ── */
+.clp_section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 7vh, 5.5rem) var(--space-10);
+}
+
+.clp_label {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.clp_section_title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--c-text);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: var(--space-8);
+}
+
+.clp_section_divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-border);
+  margin-top: clamp(3rem, 6vh, 5rem);
+}
+
+/* ── About ── */
+.clp_about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.clp_body {
+  color: var(--c-text-muted);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: var(--space-5);
+}
+
+.clp_body:last-child {
+  margin-bottom: 0;
+}
+
+.clp_about_img_wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.clp_about_img_wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.clp_about_img_wrap:hover img {
+  transform: scale(1.04);
+}
+
+/* ── What You'll Learn ── */
+.clp_learn_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.clp_learn_item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.clp_learn_item:last-child {
+  border-bottom: none;
+}
+
+.clp_learn_num {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--c-primary);
+  opacity: 0.35;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 3.5rem;
+}
+
+.clp_learn_text {
+  color: var(--c-text);
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+
+/* ── Meta cards ── */
+.clp_meta_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.clp_meta_card {
+  background: var(--c-bg-raised);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.clp_meta_card:hover {
+  border-color: var(--c-border-light);
+}
+
+.clp_meta_icon {
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.clp_meta_label {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.clp_meta_value {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clp_meta_value--body {
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+  color: var(--c-text-muted);
+  font-family: inherit;
+}
+
+/* ── Schedule ── */
+.clp_schedule_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.clp_schedule_heading {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-1);
+}
+
+.clp_schedule_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.clp_schedule_tag {
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  color: var(--c-text-muted);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              color        var(--dur-fast) var(--ease-out);
+}
+
+.clp_schedule_tag:hover {
+  border-color: var(--c-primary);
+  color: var(--c-text);
+}
+
+/* ── CTA ── */
+.clp_cta {
+  background: var(--c-bg-raised);
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 10vh, 7rem) var(--space-8);
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.clp_cta_sub {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-primary);
+}
+
+.clp_cta_title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--c-text);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.clp_cta_btn {
+  margin-top: var(--space-3);
+  padding: var(--space-4) var(--space-10);
+  background: var(--c-primary);
+  color: var(--c-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  border-radius: var(--radius-full);
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.clp_cta_btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ── Not found ── */
+.clp_notfound {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  background: var(--c-bg);
+  padding: var(--space-8);
+  text-align: center;
+}
+
+.clp_notfound h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--c-text);
+  text-transform: uppercase;
+}
+
+.clp_notfound_link {
+  color: var(--c-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .clp_about {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .clp_about_img_wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .clp_meta_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .clp_meta_card--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .clp_section {
+    padding: clamp(2.5rem, 5vh, 4rem) var(--space-6);
+  }
+
+  .clp_back {
+    left: var(--space-6);
+  }
+
+  .clp_hero_content {
+    left: var(--space-6);
+    bottom: var(--space-10);
+  }
+
+  .clp_meta_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clp_meta_card--wide {
+    grid-column: auto;
+  }
+
+  .clp_learn_item {
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .clp_learn_num {
+    font-size: 1.8rem;
+    width: 2.8rem;
+  }
+}

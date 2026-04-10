@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./AboutUs.css";
 import Footer from "../../components/Footer/Footer";
 import SEO from "../../components/SEO/SEO";
+import { COACHES_DATA } from "../../data/coachesData";
 
 import group   from "../../assets/group.webp";
 import group3  from "../../assets/group3.webp";
 import group4  from "../../assets/c24together.webp";
-import pavan   from "../../assets/pavan_coach.webp";
-import sourabh from "../../assets/Coach Sourabh.webp";
-import kaustubh from "../../assets/kaustubh_coach.webp";
-import priya   from "../../assets/Coach Priya.webp";
 
 /* ─────────────────────────────────────────
    Hooks
@@ -98,40 +96,6 @@ const VALUES = [
   },
 ];
 
-const COACHES = [
-  {
-    id: 1,
-    name: "Pavan Kumar",
-    role: "Head Coach & Founder",
-    specialty: "MMA · Boxing · S&C",
-    image: pavan,
-    bio: "12+ years of combat experience. Built Combat 24 to make elite training accessible to everyone.",
-  },
-  {
-    id: 2,
-    name: "Sourabh Patil",
-    role: "Co-Founder",
-    specialty: "Muay Thai",
-    image: sourabh,
-    bio: "National Muay Thai Champion 2024. Trained under Pavan Kumar and rose through the ranks to represent India.",
-  },
-  {
-    id: 3,
-    name: "Kaustubh",
-    role: "Coach",
-    specialty: "Brazilian Jiu-Jitsu · Grappling",
-    image: kaustubh,
-    bio: "Specialises in ground game and submission wrestling. Brings technical precision to every class.",
-  },
-  {
-    id: 4,
-    name: "Priya Yatanoor",
-    role: "Coach",
-    specialty: "Kickboxing · Fitness",
-    image: priya,
-    bio: "Combines striking and conditioning in high-energy sessions. A favourite among members new to combat sports.",
-  },
-];
 
 /* ─────────────────────────────────────────
    Sub-components
@@ -172,7 +136,7 @@ const ValueCard = ({ item, isOpen, onToggle }) => (
 );
 
 const CoachCard = ({ coach }) => (
-  <article className="coach_card">
+  <Link to={`/coaches/${coach.slug}`} className="coach_card" aria-label={`View ${coach.name}'s profile`}>
     <div className="coach_img_wrap">
       <img
         src={coach.image}
@@ -188,7 +152,7 @@ const CoachCard = ({ coach }) => (
       <p className="coach_role nue">{coach.role}</p>
       <span className="coach_specialty nue">{coach.specialty}</span>
     </div>
-  </article>
+  </Link>
 );
 
 /* ─────────────────────────────────────────
@@ -383,7 +347,7 @@ const AboutUs = () => {
           <h2 className="Anton">Meet Your Coaches</h2>
         </div>
         <div className="coaches_grid">
-          {COACHES.map((c, i) => (
+          {COACHES_DATA.map((c, i) => (
             <div
               key={c.id}
               className="coach_card_wrapper"

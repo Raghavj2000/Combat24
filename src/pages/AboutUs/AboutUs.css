@@ -468,6 +468,7 @@
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  text-decoration: none;
   transition: border-color var(--dur-base) var(--ease-out),
               transform var(--dur-base) var(--ease-out),
               box-shadow var(--dur-base) var(--ease-out);
