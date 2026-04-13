@@ -1,0 +1,166 @@
+/* ============================================
+   PRELOADER — Combat 24
+   Cinematic title-card intro, OLED dark
+   ============================================ */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Cinematic vignette — edges darker than center */
+.preloader_vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent       35%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Content ── */
+.preloader_content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+}
+
+/* ── Row clip containers (overflow hidden = clip reveal) ── */
+.preloader_row {
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* ── COMBAT ── */
+.preloader_combat {
+  display: block;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  color: #ffffff;
+  letter-spacing: 0.45em;
+  padding-right: 0.45em; /* compensate trailing letter-spacing */
+  text-transform: uppercase;
+  /* Wipe from left via clip-path */
+  animation: combatWipe 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+/* ── Orange divider ── */
+.preloader_line_wrap {
+  display: flex;
+  justify-content: center;
+  margin: clamp(14px, 2.5vw, 22px) 0;
+}
+
+.preloader_line {
+  height: 2px;
+  background: #FF4422;
+  border-radius: 2px;
+  box-shadow:
+    0 0 8px  rgba(255, 68, 34, 0.7),
+    0 0 20px rgba(255, 68, 34, 0.4),
+    0 0 40px rgba(255, 68, 34, 0.15);
+  animation: lineGrow 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* ── 24 ── */
+.preloader_num {
+  display: block;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  color: #FF4422;
+  letter-spacing: 0.35em;
+  padding-right: 0.35em;
+  text-transform: uppercase;
+  /* Rises from below */
+  animation: numRise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+
+/* ── Tagline ── */
+.preloader_tagline {
+  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: clamp(20px, 3.5vw, 32px);
+  animation: tagFade 0.6s ease-out 1.35s both;
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+
+/* Clip-path wipe left → right */
+@keyframes combatWipe {
+  0%   { clip-path: inset(0 100% 0 0); opacity: 1; }
+  100% { clip-path: inset(0 0%   0 0); opacity: 1; }
+}
+
+/* Line expands from center outward */
+@keyframes lineGrow {
+  0%   { width: 0;    opacity: 0; }
+  20%  { opacity: 1; }
+  100% { width: clamp(80px, 15vw, 140px); opacity: 1; }
+}
+
+/* 24 rises up from below */
+@keyframes numRise {
+  0%   { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+/* Tagline fades up */
+@keyframes tagFade {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── Exit — fades out with a subtle scale ── */
+.preloader--exit {
+  animation: preloaderExit 0.6s cubic-bezier(0.64, 0, 0.78, 0) forwards;
+  pointer-events: none;
+}
+
+@keyframes preloaderExit {
+  0%   { opacity: 1; transform: scale(1);    }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+
+/* ============================================
+   REDUCED MOTION — skip animations, instant show/hide
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader_combat,
+  .preloader_num,
+  .preloader_tagline {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  .preloader_line {
+    animation: none;
+    width: clamp(80px, 15vw, 140px);
+    opacity: 1;
+  }
+
+  .preloader--exit {
+    animation: reducedExit 0.25s linear forwards;
+  }
+
+  @keyframes reducedExit {
+    to { opacity: 0; }
+  }
+}

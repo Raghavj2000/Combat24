@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
@@ -7,6 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import ScrollResetRoutes from "./utils/ScrollResetRoutes";
 import Loading from "./pages/Loading/Loading";
 import { Toaster } from "react-hot-toast";
+import Preloader from "./components/Preloader/Preloader";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -22,6 +23,10 @@ const ClassProfile = lazy(() => import("./pages/ClassProfile/ClassProfile"));
 function App() {
   const location = useLocation();
   const currentPath = location.pathname;
+
+  const [preloaderDone, setPreloaderDone] = useState(
+    () => !!sessionStorage.getItem("c24_loaded")
+  );
 
   const notFoundArr = [
     "/",
@@ -40,6 +45,14 @@ function App() {
 
   return (
     <HelmetProvider>
+      {!preloaderDone && (
+        <Preloader
+          onComplete={() => {
+            sessionStorage.setItem("c24_loaded", "1");
+            setPreloaderDone(true);
+          }}
+        />
+      )}
       <Toaster
         position="top-center"
         reverseOrder={false}
