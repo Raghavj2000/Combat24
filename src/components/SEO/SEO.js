@@ -10,7 +10,7 @@ const SEO = ({
   type = "website",
   structuredData = null 
 }) => {
-  const siteUrl = "https://combat24.com";
+  const siteUrl = "https://combat24.in";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const fullImage = image ? `${siteUrl}${image}` : `${siteUrl}/c24Logo.webp`;
 
